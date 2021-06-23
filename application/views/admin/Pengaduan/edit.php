@@ -53,14 +53,14 @@
                                     <label for="nim"><strong>Ajukan</strong></label>
                                     <?php if ($p->status == "Diajukan Ke Kepala Desa") : ?>
                                     <div class="form-check">
-                                        <input type="radio" name="status" value="Diajukan Ke Kepala Desa"
-                                            checked>AjukanKe Kepala Desa
+                                        <input type="radio" name="status" value="Diajukan Ke Kepala Desa" checked>Ajukan
+                                        Pengaduan Ke Kepala Desa
                                     </div>
 
                                     <?php else : ?>
                                     <div class="form-check">
-                                        <input type="radio" name="status" value="Diajukan Ke Kepala Desa">AjukanKe
-                                        Kepala Desa
+                                        <input type="radio" name="status" value="Diajukan Ke Kepala Desa">Ajukan
+                                        Pengaduan Ke Kepala Desa
                                     </div>
                                     <?php endif ?>
                                 </div>

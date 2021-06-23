@@ -87,17 +87,31 @@ $(function() {
 
     var all_notif = function() {
 
-        <?php $sess_hak_akses = $this->session->userdata('hak_akses') ?>
-        // refresh konten
-        $('#tampil-notifikasi').html('<?php echo getDataNotifikasi($sess_hak_akses) ?>');
+        <?php 
+                
+                $sess_hak_akses   = $this->session->userdata('hak_akses');
+                $sess_id_penduduk = $this->session->userdata('id_penduduk');
+
+                // notif tertentu
+                $event = $sess_hak_akses; // hakaskes
+            ?>
+
+        $.ajax({
+
+            type: "get",
+            url: "<?php echo base_url('Notifikasi/get/'. $sess_hak_akses) ?>",
+            success: function(data) {
+
+                $('#tampil-notifikasi').html(data);
+            }
+        })
     }
 
     var channel = pusher.subscribe('my-channel');
-    channel.bind('my-event', function(data) {
+    channel.bind('<?php echo $event ?>', function(data) {
         // alert(JSON.stringify(data));
 
         toastr["info"](data.judul, data.deskripsi)
-
         // panggil atau render html
         all_notif();
 
@@ -130,7 +144,6 @@ $(function() {
     // toastr.show("Pengajuan KTP", "Pemberitahuan")
 });
 </script>
-
 </body>
 
 </html>

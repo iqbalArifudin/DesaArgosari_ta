@@ -44,7 +44,7 @@ class PelayananKK extends CI_Controller
             $this->load->view('pegawai/Pelayanan/KK/edit', $data);
             $this->load->view('template pegawai/footer', $data);
         } else {
-            $this->KK_model->ubahDataKK($id_kepala_kel);
+            $this->KK_model->ubahDataKKPegawai($id_kepala_kel);
             $this->session->set_flashdata('pesan3', 'Data Berhasil Di edit');
             $this->load->library('session');
             $this->session->set_flashdata(
@@ -56,7 +56,7 @@ class PelayananKK extends CI_Controller
                             </button>
                         </div>'
             );
-            redirect('admin/Pelayanan_kk', 'refresh');
+            redirect('pegawai/PelayananKK', 'refresh');
         }
     }
 

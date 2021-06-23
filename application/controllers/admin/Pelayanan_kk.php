@@ -43,7 +43,7 @@
             $this->load->view('admin/Pelayanan/KK/detail', $data);
             $this->load->view('template admin/footer', $data);
         } else {
-            $this->KK_model->ubahDataKK($id_kepala_kel);
+            $this->KK_model->ubahDataKKAdmin($id_kepala_kel);
             $this->session->set_flashdata('pesan3', 'Data Berhasil Di edit');
             $this->load->library('session');
             $this->session->set_flashdata(

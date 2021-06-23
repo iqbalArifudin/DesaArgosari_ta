@@ -29,6 +29,16 @@ class Akta_kelahiran_model extends CI_Model
 
     public function tambahAkta($upload, $upload1, $upload2, $upload3, $upload4,  $upload5)
     {
+
+        // data notifikasi
+        $dataNotif  = array(
+
+            'akses'         => "RT",
+            'id_penduduk'   => $this->session->userdata('id_penduduk'),
+            'id_ktp'        => $this->input->post('id_ktp', true),
+            'text'          => "Pengajuan Akta Kelahiran baru",
+        );
+
 		$data=[
             'id_akta'=>$this->input->post('id_akta', true),
             'id_penduduk'=>$this->session->userdata('id_penduduk'),
@@ -46,6 +56,17 @@ class Akta_kelahiran_model extends CI_Model
             'alasan'=>'Belum Diterima',
 		];
 	$this->db->insert('akta_kelahiran', $data);
+        // buat notifikasi 
+        $judul      = "Pengajuan Akta Kelahiran Baru";
+        $deskripsi  = "Terdapat pengajuan Akta Kelahiran baru pada " . date('d F Y H.i A');
+        $hak_aksestujuan = "RT";
+
+        insertDataNotifikasi(
+            $judul,
+            $deskripsi,
+            $dataNotif,
+            $hak_aksestujuan
+        );
     }
     
     public function upload(){    
@@ -157,14 +178,303 @@ class Akta_kelahiran_model extends CI_Model
 
     public function ubahDataAkta($id_akta)
     {
+
+        $status = $this->input->post('status', true); // inisialisasi nilai agar dapat digunakan di 2 objek berbeda
+        $alasan = $this->input->post('alasan', true);
+
+        // data notifikasi
+
+
+        // ambil data informasi penduduk yang dituju 
+        /** Karena parameter yang kita terima adalah @id_ktp maka kita harus memanggil 
+         * data ktp dan berdasasrkan id_penduduk yang bersangkutan */
+
+        #Informasi KTP
+        $ambilDataInformasiKTPById = $this->db->get_where('akta_kelahiran', ['id_akta' => $id_akta])->row_array(); // sorthand query 
+
+        // alternate 
+        /** $ambilDataInformasiKTPById = "SELECT * FROM ktp WHERE id_ktp = '$id_ktp'"; */
+
+        $penerima = $ambilDataInformasiKTPById['id_penduduk']; // id_penduduk
+
+        $dataNotif  = array(
+
+            'akses'         => "Penduduk", // RT | RW | Admin | Pegawai | Penduduk
+            'id_penduduk'   => $penerima,
+            'id_akta'        => $this->input->post('id_akta', true),
+            'text'          => "Pelayanan Akta Kelahiran " . $status,
+        );
+
+        // buat notifikasi 
+        $judul      = "Pengajuan Akta Kelahiran";
+        $deskripsi  = "Status " . $status;
+
+        $hak_aksestujuan = "Penduduk";
+        $event = $hak_aksestujuan . '-' . $penerima; // karena untuk penduduk dibutuhkan penerima
+
+        insertDataNotifikasi($judul, $deskripsi, $dataNotif, $event);
+
+
+
+        // notifikasi untuk RW (dengan catatan status di acc)
+        if (
+            $status == "Diajukan Ke Ketua RW"
+        ) {
+
+
+            // buat notifikasi untuk RW
+            $dataNotifRW  = array(
+
+                'akses'         => "RW", // RT | RW | Admin | Pegawai | Penduduk
+                'id_penduduk'   => $penerima,
+                'id_akta'        => $this->input->post('id_akta', true),
+                'text'          => 'Pengajuan Akta Kelahiran baru',
+            );
+
+            // buat notifikasi 
+            $judulRW      = "Pengajuan Akta Kelahiran";
+            $deskripsiRW  = "Status " . $status;
+
+            $hak_aksestujuanRW = "RW";
+            $event = $hak_aksestujuanRW;
+
+            insertDataNotifikasi($judulRW, $deskripsiRW, $dataNotifRW, $event);
+        }
+
+
+        // - - - - - - - - - -
         $data = [
-            'status' => $this->input->post('status', true),
-            'alasan' => $this->input->post('alasan', true),
+            'status' => $status,
+            'alasan' => $alasan,
         ];
         $this->db->where('id_akta', $id_akta);
         $this->db->update('akta_kelahiran', $data);
     }
 
+    public function ubahDataAktarw($id_akta)
+    {
+
+        $status = $this->input->post('status', true); // inisialisasi nilai agar dapat digunakan di 2 objek berbeda
+        $alasan = $this->input->post('alasan', true);
+
+        // data notifikasi
+
+
+        // ambil data informasi penduduk yang dituju 
+        /** Karena parameter yang kita terima adalah @id_ktp maka kita harus memanggil 
+         * data ktp dan berdasasrkan id_penduduk yang bersangkutan */
+
+        #Informasi KTP
+        $ambilDataInformasiKTPById = $this->db->get_where('akta_kelahiran', ['id_akta' => $id_akta])->row_array(); // sorthand query 
+
+        // alternate 
+        /** $ambilDataInformasiKTPById = "SELECT * FROM ktp WHERE id_ktp = '$id_ktp'"; */
+
+        $penerima = $ambilDataInformasiKTPById['id_penduduk']; // id_penduduk
+
+        $dataNotif  = array(
+
+            'akses'         => "Penduduk", // RT | RW | Admin | Pegawai | Penduduk
+            'id_penduduk'   => $penerima,
+            'id_akta'        => $this->input->post('id_akta', true),
+            'text'          => "Pelayanan Akta Kelahiran " . $status,
+        );
+
+        // buat notifikasi 
+        $judul      = "Pengajuan Akta Kelahiran";
+        $deskripsi  = "Status " . $status;
+
+        $hak_aksestujuan = "Penduduk";
+        $event = $hak_aksestujuan . '-' . $penerima; // karena untuk penduduk dibutuhkan penerima
+
+        insertDataNotifikasi($judul, $deskripsi, $dataNotif, $event);
+
+
+
+        // notifikasi untuk RW (dengan catatan status di acc)
+        if (
+            $status == "Diajukan Ke Pelayanan"
+        ) {
+
+
+            // buat notifikasi untuk RW
+            $dataNotifAdmin  = array(
+
+                'akses'         => "Admin", // RT | RW | Admin | Pegawai | Penduduk
+                'id_penduduk'   => $penerima,
+                'id_akta'        => $this->input->post('id_akta', true),
+                'text'          => 'Pengajuan Akta Kelahiran baru',
+            );
+
+            // buat notifikasi 
+            $judulAdmin     = "Pengajuan Akta Kelahiran";
+            $deskripsiAdmin  = "Status " . $status;
+
+            $hak_aksestujuanAdmin = "Admin";
+            $event = $hak_aksestujuanAdmin;
+
+            insertDataNotifikasi($judulAdmin, $deskripsiAdmin, $dataNotifAdmin, $event);
+        }
+
+
+        // - - - - - - - - - -
+        $data = [
+            'status' => $status,
+            'alasan' => $alasan,
+        ];
+        $this->db->where('id_akta', $id_akta);
+        $this->db->update('akta_kelahiran', $data);
+    }
+
+    public function ubahDataAktaAdmin($id_akta)
+    {
+
+        $status = $this->input->post('status', true); // inisialisasi nilai agar dapat digunakan di 2 objek berbeda
+        $alasan = $this->input->post('alasan', true);
+
+        // data notifikasi
+
+
+        // ambil data informasi penduduk yang dituju 
+        /** Karena parameter yang kita terima adalah @id_ktp maka kita harus memanggil 
+         * data ktp dan berdasasrkan id_penduduk yang bersangkutan */
+
+        #Informasi KTP
+        $ambilDataInformasiKTPById = $this->db->get_where('akta_kelahiran', ['id_akta' => $id_akta])->row_array(); // sorthand query 
+
+        // alternate 
+        /** $ambilDataInformasiKTPById = "SELECT * FROM ktp WHERE id_ktp = '$id_ktp'"; */
+
+        $penerima = $ambilDataInformasiKTPById['id_penduduk']; // id_penduduk
+
+        $dataNotif  = array(
+
+            'akses'         => "Penduduk", // RT | RW | Admin | Pegawai | Penduduk
+            'id_penduduk'   => $penerima,
+            'id_akta'        => $this->input->post('id_akta', true),
+            'text'          => "Pelayanan Akta Kelahiran " . $status,
+        );
+
+        // buat notifikasi 
+        $judul      = "Pengajuan Akta Kelahiran";
+        $deskripsi  = "Status " . $status;
+
+        $hak_aksestujuan = "Penduduk";
+        $event = $hak_aksestujuan . '-' . $penerima; // karena untuk penduduk dibutuhkan penerima
+
+        insertDataNotifikasi($judul, $deskripsi, $dataNotif, $event);
+
+
+
+        // notifikasi untuk RW (dengan catatan status di acc)
+        if (
+            $status == "Diajukan Ke Kepala Desa"
+        ) {
+
+
+            // buat notifikasi untuk RW
+            $dataNotifPegawai  = array(
+
+                'akses'         => "Pegawai", // RT | RW | Admin | Pegawai | Penduduk
+                'id_penduduk'   => $penerima,
+                'id_akta'        => $this->input->post('id_akta', true),
+                'text'          => 'Pengajuan Akta Kelahiran baru',
+            );
+
+            // buat notifikasi 
+            $judulPegawai    = "Pengajuan Akta Kelahiran";
+            $deskripsiPegawai  = "Status " . $status;
+
+            $hak_aksestujuanPegawai = "Pegawai";
+            $event = $hak_aksestujuanPegawai;
+
+            insertDataNotifikasi($judulPegawai, $deskripsiPegawai, $dataNotifPegawai, $event);
+        }
+
+
+        // - - - - - - - - - -
+        $data = [
+            'status' => $status,
+            'alasan' => $alasan,
+        ];
+        $this->db->where('id_akta', $id_akta);
+        $this->db->update('akta_kelahiran', $data);
+    }
+
+    public function ubahDataAktaPegawai($id_akta)
+    {
+
+        $status = $this->input->post('status', true); // inisialisasi nilai agar dapat digunakan di 2 objek berbeda
+        $alasan = $this->input->post('alasan', true);
+
+        // data notifikasi
+
+
+        // ambil data informasi penduduk yang dituju 
+        /** Karena parameter yang kita terima adalah @id_ktp maka kita harus memanggil 
+         * data ktp dan berdasasrkan id_penduduk yang bersangkutan */
+
+        #Informasi KTP
+        $ambilDataInformasiKTPById = $this->db->get_where('akta_kelahiran', ['id_akta' => $id_akta])->row_array(); // sorthand query 
+
+        // alternate 
+        /** $ambilDataInformasiKTPById = "SELECT * FROM ktp WHERE id_ktp = '$id_ktp'"; */
+
+        $penerima = $ambilDataInformasiKTPById['id_penduduk']; // id_penduduk
+
+        $dataNotif  = array(
+
+            'akses'         => "Penduduk", // RT | RW | Admin | Pegawai | Penduduk
+            'id_penduduk'   => $penerima,
+            'id_akta'        => $this->input->post('id_akta', true),
+            'text'          => "Pelayanan Akta Kelahiran " . $status,
+        );
+
+        // buat notifikasi 
+        $judul      = "Pengajuan Akta Kelahiran";
+        $deskripsi  = "Status " . $status;
+
+        $hak_aksestujuan = "Penduduk";
+        $event = $hak_aksestujuan . '-' . $penerima; // karena untuk penduduk dibutuhkan penerima
+
+        insertDataNotifikasi($judul, $deskripsi, $dataNotif, $event);
+
+
+
+        // notifikasi untuk RW (dengan catatan status di acc)
+        if (
+            $status == "Disetujui"
+        ) {
+
+
+            // buat notifikasi untuk RW
+            $dataNotifPegawai  = array(
+
+                'akses'         => "Admin", // RT | RW | Admin | Pegawai | Penduduk
+                'id_penduduk'   => $penerima,
+                'id_akta'        => $this->input->post('id_akta', true),
+                'text'          => 'Pelayanan Akta Kelahiran Disetujui',
+            );
+
+            // buat notifikasi 
+            $judulPegawai    = "Pengajuan Akta Kelahiran";
+            $deskripsiPegawai  = "Status " . $status;
+
+            $hak_aksestujuanPegawai = "Pegawai";
+            $event = $hak_aksestujuanPegawai;
+
+            insertDataNotifikasi($judulPegawai, $deskripsiPegawai, $dataNotifPegawai, $event);
+        }
+
+
+        // - - - - - - - - - -
+        $data = [
+            'status' => $status,
+            'alasan' => $alasan,
+        ];
+        $this->db->where('id_akta', $id_akta);
+        $this->db->update('akta_kelahiran', $data);
+    }
 
     public function getAkta($id_akta){  
         $this->db->select('akta_kelahiran.*, penduduk.nama, penduduk.NIK');

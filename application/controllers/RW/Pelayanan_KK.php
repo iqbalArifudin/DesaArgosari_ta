@@ -74,7 +74,7 @@ class Pelayanan_KK extends CI_Controller
             $this->load->view('RW/Pelayanan/KK/detail', $data);
             $this->load->view('template RW/footer', $data);
         } else {
-            $this->KK_model->ubahKK($id_kepala_kel);
+            $this->KK_model->ubahKKrw($id_kepala_kel);
             $this->session->set_flashdata('pesan3', 'Data Berhasil Di edit');
             $this->load->library('session');
             $this->session->set_flashdata(

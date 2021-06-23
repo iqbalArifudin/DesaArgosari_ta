@@ -43,7 +43,7 @@
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bell fa-fw"></i>
                         <!-- Counter - Alerts -->
-                        <span class="badge badge-danger badge-counter">5+</span>
+                        <span class="badge badge-danger badge-counter">*</span>
                     </a>
                     <!-- Dropdown - Alerts -->
                     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -76,7 +76,8 @@
                                 $290.29 has been deposited into your account!
                             </div>
                         </a> -->
-                        <!-- <?php //foreach ($notifikasi as $n): ?>
+                        <!-- <?php //foreach ($notifikasi as $n): 
+                                ?>
                         <a class="dropdown-item d-flex align-items-center" href="#">
                             <div class="mr-3">
                                 <div class="icon-circle bg-warning">
@@ -84,11 +85,14 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="small text-gray-500"><?php //echo $n->time ?></div>
-                                <?php //echo $n->text ?>
+                                <div class="small text-gray-500"><?php //echo $n->time 
+                                                                    ?></div>
+                                <?php //echo $n->text 
+                                ?>
                             </div>
                         </a>
-                        <?php //endforeach ?> -->
+                        <?php //endforeach 
+                        ?> -->
                         <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                     </div>
                 </li>

@@ -217,8 +217,6 @@
                                     <?php endforeach ?>
                                 <p>
                                     <hr>
-                                    <a href="<?= base_url("pegawai/PelayananKK/pdf"); ?>" class="btn btn-success"><i
-                                            class="fa fa-print"></i>&nbsp;&nbsp;Cetak</a>
                                     <a href="<?= base_url("pegawai/PelayananKK") ?>" class="btn btn-info"><i
                                             class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
 

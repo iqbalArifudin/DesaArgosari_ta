@@ -19,12 +19,33 @@ class Kritik_saran_model extends CI_Model {
     }
 
     public function tambahDataSaran(){
+        // data notifikasi
+        $dataNotif  = array(
+
+            'akses'         => "Pegawai",
+            'id_penduduk'   => $this->session->userdata('id_penduduk'),
+            'id_saran'        => $this->input->post('id_saran', true),
+            'text'          => "Kritik dan Saran Baru",
+        );
+
 		$data=[
 			'id_saran'=>$this->input->post('id_saran', true),
             'id_penduduk'=>$this->session->userdata('id_penduduk'),
             'keterangan'=>$this->input->post('keterangan', true),
 		];
 	$this->db->insert('kritik_saran', $data);
+
+        // buat notifikasi 
+        $judul      = "Kritik dan Saran Baru";
+        $deskripsi  = "Terdapat Kritik dan Saran baru pada " . date('d F Y H.i A');
+        $hak_aksestujuan = "Pegawai";
+
+        insertDataNotifikasi(
+            $judul,
+            $deskripsi,
+            $dataNotif,
+            $hak_aksestujuan
+        );
     }
     
    

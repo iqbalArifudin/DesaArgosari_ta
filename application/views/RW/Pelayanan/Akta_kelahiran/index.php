@@ -18,6 +18,7 @@
                                 <th>KETERANGAN</th>
                                 <th>TANGGAL MENGAJUKAN</th>
                                 <th>STATUS</th>
+                                <th>ALASAN</th>
                                 <th>AKSI</th>
                             </tr>
                         </thead>
@@ -30,71 +31,59 @@
                                 <td><?= $akta->keterangan ?></td>
                                 <td><?= $akta->tgl_mengajukan ?></td>
                                 <td><span class="badge badge-warning"><?= $akta->status ?></span></td>
+                                <td><?= $akta->alasan ?></td>
                                 <td>
-
-                                    <a class='btn btn-warning'
-                                        href='<?= base_url() . 'pegawai/akta_kelahiran/detail/' . $akta->id_akta ?>'
-                                        class='btn btn-warning'>
-                                        <i class="fas fa-eye" aria-hidden="true"><span>&nbsp;Detail</span></i>
-                                    </a>
 
                                     <?php if ($akta->status == "Ditolak") : ?>
                                     <a btn btn-info href="#modalDelete2" data-toggle="modal"
-                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('pegawai/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('RT/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
                                         class='btn btn-info'>
                                         <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
                                     </a>
 
                                     <?php elseif ($akta->status == "Diproses") : ?>
                                     <a btn btn-info href="#modalDelete3" data-toggle="modal"
-                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('pegawai/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
-                                        class='btn btn-info'>
-                                        <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
-                                    </a>
-
-                                    <?php elseif ($akta->status == "Disetujui") : ?>
-                                    <a btn btn-info href="#modalDelete2" data-toggle="modal"
-                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('pegawai/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('RT/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
                                         class='btn btn-info'>
                                         <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
                                     </a>
 
                                     <?php elseif ($akta->status == "Selesai") : ?>
                                     <a btn btn-info href="#modalDelete3" data-toggle="modal"
-                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('pegawai/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('RT/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
                                         class='btn btn-info'>
                                         <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
                                     </a>
 
-                                    <?php elseif ($akta->status == "Diajukan Ke Pelayanan") : ?>
+                                    <?php elseif ($akta->status == "Diajukan Ke Kepala Desa") : ?>
                                     <a btn btn-info href="#modalDelete3" data-toggle="modal"
-                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('pegawai/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('RT/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
                                         class='btn btn-info'>
                                         <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
                                     </a>
 
                                     <?php elseif ($akta->status == "Diajukan") : ?>
                                     <a btn btn-info href="#modalDelete3" data-toggle="modal"
-                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('pegawai/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('RT/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
                                         class='btn btn-info'>
                                         <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
                                     </a>
 
-                                    <?php elseif ($akta->status == "Diajukan Ke Ketua RW") : ?>
+                                    <?php elseif ($akta->status == "Diajukan Ke Pelayanan") : ?>
                                     <a btn btn-info href="#modalDelete3" data-toggle="modal"
-                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('pegawai/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('RT/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
                                         class='btn btn-info'>
                                         <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
                                     </a>
 
                                     <?php else : ?>
+
                                     <a class='btn btn-info'
-                                        href='<?= base_url() . 'pegawai/akta_kelahiran/edit/' . $akta->id_akta ?>'
+                                        href='<?= base_url() . 'RW/akta_kelahiran/edit/' . $akta->id_akta ?>'
                                         class='btn btn-biru'>
                                         <i class="fas fa-hourglass-half"
                                             aria-hidden="true"><span>&nbsp;Proses</span></i>
                                     </a>
-
 
                                     <?php endif ?>
                                 </td>
@@ -107,6 +96,7 @@
         </div>
     </div>
 </div>
+
 <!-- Modal -->
 <div class="modal fade" id="modalDelete2">
     <div class="modal-dialog">

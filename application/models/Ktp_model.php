@@ -8,6 +8,7 @@ class Ktp_model extends CI_Model {
     {
         $this->db->select('ktp.*, penduduk.*');
         $this->db->join('penduduk', 'ktp.id_penduduk = penduduk.id_penduduk');
+        $this->db->order_by('tanggal_buat', 'DESC');
         return $this->db->get('ktp')->result();
     }
 
@@ -22,6 +23,7 @@ class Ktp_model extends CI_Model {
         $this->db->select('ktp.*, penduduk.*');
         $this->db->join('penduduk', 'ktp.id_penduduk = penduduk.id_penduduk');
         $this->db->where('ktp.id_penduduk', $id_penduduk);
+        $this->db->order_by('tanggal_buat', 'DESC');
         return $this->db->get('ktp')->result();
     }
     
@@ -32,16 +34,18 @@ class Ktp_model extends CI_Model {
         $this->db->where('status !=', 'Diajukan');
         $this->db->where('status !=', 'Diajukan Ke Ketua RW');
         $this->db->where('status !=', 'Diajukan Ke Pelayanan');
+        $this->db->order_by('tanggal_buat', 'DESC');
         return $this->db->get('ktp')->result();
     }
 
     public function tampilKtpAdmin()
     {
-        $this->db->select('ktp.*, penduduk.*');
+        $this->db->select('ktp.*, penduduk.*'); 
         $this->db->join('penduduk', 'ktp.id_penduduk = penduduk.id_penduduk');
         $this->db->where('status !=', 'Diajukan');
-        $this->db->or_where('status !=', 'Ditolak');
-        $this->db->or_where('status !=', 'Diajukan Ke Ketua RW');
+        $this->db->where('status !=', 'Ditolak');
+        $this->db->where('status !=', 'Diajukan Ke Ketua RW');
+        $this->db->order_by('tanggal_buat', 'DESC');
         return $this->db->get('ktp')->result();
     }
 
@@ -50,6 +54,7 @@ class Ktp_model extends CI_Model {
         $this->db->select('ktp.*, penduduk.*');
         $this->db->join('penduduk', 'ktp.id_penduduk = penduduk.id_penduduk');
         $this->db->where('status !=', 'Diajukan');
+        $this->db->order_by('tanggal_buat', 'DESC');
         return $this->db->get('ktp')->result();
     }
 
@@ -150,6 +155,82 @@ class Ktp_model extends CI_Model {
 
         #Informasi KTP
         $ambilDataInformasiKTPById = $this->db->get_where('ktp', ['id_ktp' => $id_ktp])->row_array(); // sorthand query 
+        
+        // alternate 
+        /** $ambilDataInformasiKTPById = "SELECT * FROM ktp WHERE id_ktp = '$id_ktp'"; */
+        
+        $penerima = $ambilDataInformasiKTPById['id_penduduk']; // id_penduduk
+
+        $dataNotif  = array(
+
+            'akses'         => "Penduduk", // RT | RW | Admin | Pegawai | Penduduk
+            'id_penduduk'   => $penerima,
+            'id_ktp'        => $this->input->post('id_ktp', true),
+            'text'          => "Pelayanan KTP " . $status,
+        );
+
+        // buat notifikasi 
+        $judul      = "Pengajuan KTP";
+        $deskripsi  = "Status " . $status;
+
+        $hak_aksestujuan = "Penduduk";
+        $event = $hak_aksestujuan . '-' . $penerima; // karena untuk penduduk dibutuhkan penerima
+
+        insertDataNotifikasi($judul, $deskripsi, $dataNotif, $event);
+
+
+
+        // notifikasi untuk RW (dengan catatan status di acc)
+        if (
+            $status == "Diajukan Ke Ketua RW"
+        ) {
+
+
+            // buat notifikasi untuk RW
+            $dataNotifRW  = array(
+
+                'akses'         => "RW", // RT | RW | Admin | Pegawai | Penduduk
+                'id_penduduk'   => $penerima,
+                'id_ktp'        => $this->input->post('id_ktp', true),
+                'text'          => 'Pengajuan KTP baru',
+            );
+
+            // buat notifikasi 
+            $judulRW      = "Pengajuan KTP";
+            $deskripsiRW  = "Status " . $status;
+
+            $hak_aksestujuanRW = "RW";
+            $event = $hak_aksestujuanRW;
+
+            insertDataNotifikasi($judulRW, $deskripsiRW, $dataNotifRW, $event);
+        }
+
+
+        // - - - - - - - - - -
+        $data = [
+            'status' => $status,
+            'alasan' => $alasan,
+        ];
+        $this->db->where('id_ktp', $id_ktp);
+        $this->db->update('ktp', $data);
+    }
+
+    public function ubahKtprw($id_ktp)
+    {
+
+
+        $status = $this->input->post('status', true); // inisialisasi nilai agar dapat digunakan di 2 objek berbeda
+        $alasan = $this->input->post('alasan', true);
+
+        // data notifikasi
+
+
+        // ambil data informasi penduduk yang dituju 
+        /** Karena parameter yang kita terima adalah @id_ktp maka kita harus memanggil 
+         * data ktp dan berdasasrkan id_penduduk yang bersangkutan */
+
+        #Informasi KTP
+        $ambilDataInformasiKTPById = $this->db->get_where('ktp', ['id_ktp' => $id_ktp])->row_array(); // sorthand query 
 
         // alternate 
         /** $ambilDataInformasiKTPById = "SELECT * FROM ktp WHERE id_ktp = '$id_ktp'"; */
@@ -161,28 +242,207 @@ class Ktp_model extends CI_Model {
             'akses'         => "Penduduk", // RT | RW | Admin | Pegawai | Penduduk
             'id_penduduk'   => $penerima,
             'id_ktp'        => $this->input->post('id_ktp', true),
-            'text'          => $status,
+            'text'          => "Pelayanan KTP " . $status,
         );
 
         // buat notifikasi 
         $judul      = "Pengajuan KTP";
         $deskripsi  = "Status " . $status;
+
         $hak_aksestujuan = "Penduduk";
         $event = $hak_aksestujuan . '-' . $penerima; // karena untuk penduduk dibutuhkan penerima
 
         insertDataNotifikasi($judul, $deskripsi, $dataNotif, $event);
 
+
+
+        // notifikasi untuk RW (dengan catatan status di acc)
+        if (
+            $status == "Diajukan Ke Pelayanan"
+        ) {
+
+
+            // buat notifikasi untuk RW
+            $dataNotifAdmin  = array(
+
+                'akses'         => "Admin", // RT | RW | Admin | Pegawai | Penduduk
+                'id_penduduk'   => $penerima,
+                'id_ktp'        => $this->input->post('id_ktp', true),
+                'text'          => 'Pengajuan KTP baru',
+            );
+
+            // buat notifikasi 
+            $judulAdmin      = "Pengajuan KTP";
+            $deskripsiAdmin  = "Status " . $status;
+
+            $hak_aksestujuanAdmin = "Admin";
+            $event = $hak_aksestujuanAdmin;
+
+            insertDataNotifikasi($judulAdmin, $deskripsiAdmin, $dataNotifAdmin, $event);
+        }
+
+
         // - - - - - - - - - -
-
-
-		$data=[
+        $data = [
             'status' => $status,
             'alasan' => $alasan,
-		];
-        $this->db->where('id_ktp', $id_ktp);	
+        ];
+        $this->db->where('id_ktp', $id_ktp);
         $this->db->update('ktp', $data);
     }
 
+    public function ubahKtpAdmin($id_ktp)
+    {
+
+
+        $status = $this->input->post('status', true); // inisialisasi nilai agar dapat digunakan di 2 objek berbeda
+        $alasan = $this->input->post('alasan', true);
+
+        // data notifikasi
+
+
+        // ambil data informasi penduduk yang dituju 
+        /** Karena parameter yang kita terima adalah @id_ktp maka kita harus memanggil 
+         * data ktp dan berdasasrkan id_penduduk yang bersangkutan */
+
+        #Informasi KTP
+        $ambilDataInformasiKTPById = $this->db->get_where('ktp', ['id_ktp' => $id_ktp])->row_array(); // sorthand query 
+
+        // alternate 
+        /** $ambilDataInformasiKTPById = "SELECT * FROM ktp WHERE id_ktp = '$id_ktp'"; */
+
+        $penerima = $ambilDataInformasiKTPById['id_penduduk']; // id_penduduk
+
+        $dataNotif  = array(
+
+            'akses'         => "Penduduk", // RT | RW | Admin | Pegawai | Penduduk
+            'id_penduduk'   => $penerima,
+            'id_ktp'        => $this->input->post('id_ktp', true),
+            'text'          => "Pelayanan KTP " . $status,
+        );
+
+        // buat notifikasi 
+        $judul      = "Pengajuan KTP";
+        $deskripsi  = "Status " . $status;
+
+        $hak_aksestujuan = "Penduduk";
+        $event = $hak_aksestujuan . '-' . $penerima; // karena untuk penduduk dibutuhkan penerima
+
+        insertDataNotifikasi($judul, $deskripsi, $dataNotif, $event);
+
+
+
+        // notifikasi untuk RW (dengan catatan status di acc)
+        if (
+            $status == "Diajukan Ke Kepala Desa"
+        ) {
+
+
+            // buat notifikasi untuk RW
+            $dataNotifPegawai  = array(
+
+                'akses'         => "Pegawai", // RT | RW | Admin | Pegawai | Penduduk
+                'id_penduduk'   => $penerima,
+                'id_ktp'        => $this->input->post('id_ktp', true),
+                'text'          => 'Pengajuan KTP baru',
+            );
+
+            // buat notifikasi 
+            $judulPegawai     = "Pengajuan KTP";
+            $deskripsiPegawai  = "Status " . $status;
+
+            $hak_aksestujuanPegawai = "Pegawai";
+            $event = $hak_aksestujuanPegawai;
+
+            insertDataNotifikasi($judulPegawai, $deskripsiPegawai, $dataNotifPegawai, $event);
+        }
+
+
+        // - - - - - - - - - -
+        $data = [
+            'status' => $status,
+            'alasan' => $alasan,
+            ];
+        $this->db->where('id_ktp', $id_ktp);
+        $this->db->update('ktp', $data);
+    }
+
+
+    public function ubahKtpPegawai($id_ktp)
+    {
+
+
+        $status = $this->input->post('status', true); // inisialisasi nilai agar dapat digunakan di 2 objek berbeda
+        $alasan = $this->input->post('alasan', true);
+
+        // data notifikasi
+
+
+        // ambil data informasi penduduk yang dituju 
+        /** Karena parameter yang kita terima adalah @id_ktp maka kita harus memanggil 
+         * data ktp dan berdasasrkan id_penduduk yang bersangkutan */
+
+        #Informasi KTP
+        $ambilDataInformasiKTPById = $this->db->get_where('ktp', ['id_ktp' => $id_ktp])->row_array(); // sorthand query 
+
+        // alternate 
+        /** $ambilDataInformasiKTPById = "SELECT * FROM ktp WHERE id_ktp = '$id_ktp'"; */
+
+        $penerima = $ambilDataInformasiKTPById['id_penduduk']; // id_penduduk
+
+        $dataNotif  = array(
+
+            'akses'         => "Penduduk", // RT | RW | Admin | Pegawai | Penduduk
+            'id_penduduk'   => $penerima,
+            'id_ktp'        => $this->input->post('id_ktp', true),
+            'text'          => "Pelayanan KTP " . $status . "Kepala Desa",
+        );
+
+        // buat notifikasi 
+        $judul      = "Pengajuan KTP";
+        $deskripsi  = "Status " . $status;
+
+        $hak_aksestujuan = "Penduduk";
+        $event = $hak_aksestujuan . '-' . $penerima; // karena untuk penduduk dibutuhkan penerima
+
+        insertDataNotifikasi($judul, $deskripsi, $dataNotif, $event);
+
+
+
+        // notifikasi untuk RW (dengan catatan status di acc)
+        if (
+            $status == "Disetujui"
+        ) {
+
+
+            // buat notifikasi untuk RW
+            $dataNotifStj  = array(
+
+                'akses'         => "Admin", // RT | RW | Admin | Pegawai | Penduduk
+                'id_penduduk'   => $penerima,
+                'id_ktp'        => $this->input->post('id_ktp', true),
+                'text'          => 'Pelayanan KTP Disetujui',
+            );
+
+            // buat notifikasi 
+            $judulStj     = "Layanan KTP";
+            $deskripsiStj  = "Status " . $status;
+
+            $hak_aksestujuanStj = "Admin";
+            $event = $hak_aksestujuanStj;
+
+            insertDataNotifikasi($judulStj, $deskripsiStj, $dataNotifStj, $event);
+        }
+
+
+        // - - - - - - - - - -
+        $data = [
+            'status' => $status,
+            'alasan' => $alasan,
+        ];
+        $this->db->where('id_ktp', $id_ktp);
+        $this->db->update('ktp', $data);
+    }
 
     public function getKtp($id_ktp)
     {

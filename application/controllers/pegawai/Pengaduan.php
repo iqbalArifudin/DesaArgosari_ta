@@ -71,7 +71,7 @@
                 $this->load->view('pegawai/Pengaduan/edit' ,$data);
             }
             else{
-                    $this->Pengaduan_model->ubahPengaduan($id_pengaduan);
+            $this->Pengaduan_model->ubahPengaduanPegawai($id_pengaduan);
                     $this->session->set_flashdata('pesan3','Data Berhasil Di edit');
                     $this->load->library('session');
             $this->session->set_flashdata(

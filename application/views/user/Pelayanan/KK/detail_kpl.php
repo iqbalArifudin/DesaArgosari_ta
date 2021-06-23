@@ -138,128 +138,130 @@
                         </tbody>
                         <tfoot>
                             <?php foreach ($kk as $kk) : ?>
-                            <td><?= $kk->nama_kel ?></td>
-                            <td><?= $kk->NIK_kel ?></td>
-                            <td><?= $kk->tempat_lahir ?> / <?= $kk->tanggal_lahir ?></td>
-                            <td>
-                                <?php if ($kk->status == "Disetujui") : ?>
-                                <a class='btn btn-danger' href="#modalDelete2" data-toggle="modal"
-                                    onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('user/LayananKK/hapusKel/' . $kk->id_keluarga) ?>')"
-                                    class='btn btn-danger btn-circle'>
-                                    <i class="fa fa-trash" aria-hidden="true">&nbsp;Hapus</i>
-                                </a>
+                            <tr>
+                                <td><?= $kk->nama_kel ?></td>
+                                <td><?= $kk->NIK_kel ?></td>
+                                <td><?= $kk->tempat_lahir ?> / <?= $kk->tanggal_lahir ?></td>
+                                <td>
+                                    <?php if ($kk->status == "Disetujui") : ?>
+                                    <a class='btn btn-danger' href="#modalDelete2" data-toggle="modal"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('user/LayananKK/hapusKel/' . $kk->id_keluarga) ?>')"
+                                        class='btn btn-danger btn-circle'>
+                                        <i class="fa fa-trash" aria-hidden="true">&nbsp;Hapus</i>
+                                    </a>
 
-                                <?php elseif ($kk->status == "Diproses") : ?>
-                                <a class='btn btn-danger' href="#modalDelete2" data-toggle="modal"
-                                    onclick="$('#modalDelete2 #formDelete').attr('action', '<?= site_url('user/LayananKK/hapusKel/' . $kk->id_keluarga) ?>')"
-                                    class='btn btn-danger btn-circle'>
-                                    <i class="fa fa-trash" aria-hidden="true">&nbsp;Hapus</i>
-                                </a>
+                                    <?php elseif ($kk->status == "Diproses") : ?>
+                                    <a class='btn btn-danger' href="#modalDelete2" data-toggle="modal"
+                                        onclick="$('#modalDelete2 #formDelete').attr('action', '<?= site_url('user/LayananKK/hapusKel/' . $kk->id_keluarga) ?>')"
+                                        class='btn btn-danger btn-circle'>
+                                        <i class="fa fa-trash" aria-hidden="true">&nbsp;Hapus</i>
+                                    </a>
 
-                                <?php elseif ($kk->status == "Diajukan Ke Kepala Desa") : ?>
-                                <a class='btn btn-danger' href="#modalDelete2" data-toggle="modal"
-                                    onclick="$('#modalDelete2 #formDelete').attr('action', '<?= site_url('user/LayananKK/hapusKel/' . $kk->id_keluarga) ?>')"
-                                    class='btn btn-danger btn-circle'>
-                                    <i class="fa fa-trash" aria-hidden="true">&nbsp;Hapus</i>
-                                </a>
+                                    <?php elseif ($kk->status == "Diajukan Ke Kepala Desa") : ?>
+                                    <a class='btn btn-danger' href="#modalDelete2" data-toggle="modal"
+                                        onclick="$('#modalDelete2 #formDelete').attr('action', '<?= site_url('user/LayananKK/hapusKel/' . $kk->id_keluarga) ?>')"
+                                        class='btn btn-danger btn-circle'>
+                                        <i class="fa fa-trash" aria-hidden="true">&nbsp;Hapus</i>
+                                    </a>
 
-                                <?php elseif ($kk->status == "Diajukan Ke Ketua RW") : ?>
-                                <a class='btn btn-danger' href="#modalDelete2" data-toggle="modal"
-                                    onclick="$('#modalDelete2 #formDelete').attr('action', '<?= site_url('user/LayananKK/hapusKel/' . $kk->id_keluarga) ?>')"
-                                    class='btn btn-danger btn-circle'>
-                                    <i class="fa fa-trash" aria-hidden="true">&nbsp;Hapus</i>
-                                </a>
+                                    <?php elseif ($kk->status == "Diajukan Ke Ketua RW") : ?>
+                                    <a class='btn btn-danger' href="#modalDelete2" data-toggle="modal"
+                                        onclick="$('#modalDelete2 #formDelete').attr('action', '<?= site_url('user/LayananKK/hapusKel/' . $kk->id_keluarga) ?>')"
+                                        class='btn btn-danger btn-circle'>
+                                        <i class="fa fa-trash" aria-hidden="true">&nbsp;Hapus</i>
+                                    </a>
 
-                                <?php elseif ($kk->status == "Diajukan Ke Pelayanan") : ?>
-                                <a class='btn btn-danger' href="#modalDelete2" data-toggle="modal"
-                                    onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('user/LayananKK/hapusKel/' . $kk->id_keluarga) ?>')"
-                                    class='btn btn-danger btn-circle'>
-                                    <i class="fa fa-trash" aria-hidden="true">&nbsp;Hapus</i>
-                                </a>
+                                    <?php elseif ($kk->status == "Diajukan Ke Pelayanan") : ?>
+                                    <a class='btn btn-danger' href="#modalDelete2" data-toggle="modal"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('user/LayananKK/hapusKel/' . $kk->id_keluarga) ?>')"
+                                        class='btn btn-danger btn-circle'>
+                                        <i class="fa fa-trash" aria-hidden="true">&nbsp;Hapus</i>
+                                    </a>
 
-                                <?php elseif ($kk->status == "Selesai") : ?>
-                                <a class='btn btn-danger' href="#modalDelete2" data-toggle="modal"
-                                    onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('user/LayananKK/hapusKel/' . $kk->id_keluarga) ?>')"
-                                    class='btn btn-danger btn-circle'>
-                                    <i class="fa fa-trash" aria-hidden="true">&nbsp;Hapus</i>
-                                </a>
+                                    <?php elseif ($kk->status == "Selesai") : ?>
+                                    <a class='btn btn-danger' href="#modalDelete2" data-toggle="modal"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('user/LayananKK/hapusKel/' . $kk->id_keluarga) ?>')"
+                                        class='btn btn-danger btn-circle'>
+                                        <i class="fa fa-trash" aria-hidden="true">&nbsp;Hapus</i>
+                                    </a>
 
-                                <?php else : ?>
-                                <a class='btn btn-danger' href="#modalDelete" data-toggle="modal"
-                                    onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('user/LayananKK/hapusKel/' . $kk->id_keluarga) ?>')"
-                                    class='btn btn-danger btn-circle'>
-                                    <i class="fa fa-trash" aria-hidden="true">&nbsp;Hapus</i>
-                                </a>
+                                    <?php else : ?>
+                                    <a class='btn btn-danger' href="#modalDelete" data-toggle="modal"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('user/LayananKK/hapusKel/' . $kk->id_keluarga) ?>')"
+                                        class='btn btn-danger btn-circle'>
+                                        <i class="fa fa-trash" aria-hidden="true">&nbsp;Hapus</i>
+                                    </a>
 
-                                <?php endif ?>
+                                    <?php endif ?>
 
-                                <!--EDIT-->
-                                <!---Edit -->
-                                <?php if ($kk->status == "Disetujui") : ?>
-                                <a class='btn btn-warning' href="#modalEdit2" data-toggle="modal"
-                                    onclick="$('#modalEdit #formDelete').attr('action', '<?= site_url('user/LayananKK/editKel/' . $kk->id_keluarga) ?>')"
-                                    class='btn btn-warning btn-circle'>
-                                    <i class="fa fa-edit" aria-hidden="true">&nbsp;Edit</i>
-                                </a>
+                                    <!--EDIT-->
+                                    <!---Edit -->
+                                    <?php if ($kk->status == "Disetujui") : ?>
+                                    <a class='btn btn-warning' href="#modalEdit2" data-toggle="modal"
+                                        onclick="$('#modalEdit #formDelete').attr('action', '<?= site_url('user/LayananKK/editKel/' . $kk->id_keluarga) ?>')"
+                                        class='btn btn-warning btn-circle'>
+                                        <i class="fa fa-edit" aria-hidden="true">&nbsp;Edit</i>
+                                    </a>
 
-                                <?php elseif ($kk->status == "Diproses") : ?>
-                                <a class='btn btn-warning' href="#modalEdit2" data-toggle="modal"
-                                    onclick="$('#modalEdit2 #formDelete').attr('action', '<?= site_url('user/LayananKK/editKel/' . $kk->id_keluarga) ?>')"
-                                    class='btn btn-warning btn-circle'>
-                                    <i class="fa fa-edit" aria-hidden="true">&nbsp;Edit</i>
-                                </a>
+                                    <?php elseif ($kk->status == "Diproses") : ?>
+                                    <a class='btn btn-warning' href="#modalEdit2" data-toggle="modal"
+                                        onclick="$('#modalEdit2 #formDelete').attr('action', '<?= site_url('user/LayananKK/editKel/' . $kk->id_keluarga) ?>')"
+                                        class='btn btn-warning btn-circle'>
+                                        <i class="fa fa-edit" aria-hidden="true">&nbsp;Edit</i>
+                                    </a>
 
-                                <?php elseif ($kk->status == "Diajukan Ke Kepala Desa") : ?>
-                                <a class='btn btn-warning' href="#modalEdit2" data-toggle="modal"
-                                    onclick="$('#modalEdit2 #formDelete').attr('action', '<?= site_url('user/LayananKK/editKel/' . $kk->id_keluarga) ?>')"
-                                    class='btn btn-warning btn-circle'>
-                                    <i class="fa fa-edit" aria-hidden="true">&nbsp;Edit</i>
-                                </a>
+                                    <?php elseif ($kk->status == "Diajukan Ke Kepala Desa") : ?>
+                                    <a class='btn btn-warning' href="#modalEdit2" data-toggle="modal"
+                                        onclick="$('#modalEdit2 #formDelete').attr('action', '<?= site_url('user/LayananKK/editKel/' . $kk->id_keluarga) ?>')"
+                                        class='btn btn-warning btn-circle'>
+                                        <i class="fa fa-edit" aria-hidden="true">&nbsp;Edit</i>
+                                    </a>
 
-                                <?php elseif ($kk->status == "Diajukan Ke Ketua RW") : ?>
-                                <a class='btn btn-warning' href="#modalEdit2" data-toggle="modal"
-                                    onclick="$('#modalEdit2 #formDelete').attr('action', '<?= site_url('user/LayananKK/editKel/' . $kk->id_keluarga) ?>')"
-                                    class='btn btn-warning btn-circle'>
-                                    <i class="fa fa-edit" aria-hidden="true">&nbsp;Edit</i>
-                                </a>
+                                    <?php elseif ($kk->status == "Diajukan Ke Ketua RW") : ?>
+                                    <a class='btn btn-warning' href="#modalEdit2" data-toggle="modal"
+                                        onclick="$('#modalEdit2 #formDelete').attr('action', '<?= site_url('user/LayananKK/editKel/' . $kk->id_keluarga) ?>')"
+                                        class='btn btn-warning btn-circle'>
+                                        <i class="fa fa-edit" aria-hidden="true">&nbsp;Edit</i>
+                                    </a>
 
-                                <?php elseif ($kk->status == "Diajukan Ke Pelayanan") : ?>
-                                <a class='btn btn-warning' href="#modalEdit2" data-toggle="modal"
-                                    onclick="$('#modalEdit #formDelete').attr('action', '<?= site_url('user/LayananKK/editKel/' . $kk->id_keluarga) ?>')"
-                                    class='btn btn-warning btn-circle'>
-                                    <i class="fa fa-edit" aria-hidden="true">&nbsp;Edit</i>
-                                </a>
+                                    <?php elseif ($kk->status == "Diajukan Ke Pelayanan") : ?>
+                                    <a class='btn btn-warning' href="#modalEdit2" data-toggle="modal"
+                                        onclick="$('#modalEdit #formDelete').attr('action', '<?= site_url('user/LayananKK/editKel/' . $kk->id_keluarga) ?>')"
+                                        class='btn btn-warning btn-circle'>
+                                        <i class="fa fa-edit" aria-hidden="true">&nbsp;Edit</i>
+                                    </a>
 
-                                <?php elseif ($kk->status == "Selesai") : ?>
-                                <a class='btn btn-warning' href="#modalEdit2" data-toggle="modal"
-                                    onclick="$('#modalEdit #formDelete').attr('action', '<?= site_url('user/LayananKK/editKel/' . $kk->id_keluarga) ?>')"
-                                    class='btn btn-warning btn-circle'>
-                                    <i class="fa fa-edit" aria-hidden="true">&nbsp;Edit</i>
-                                </a>
+                                    <?php elseif ($kk->status == "Selesai") : ?>
+                                    <a class='btn btn-warning' href="#modalEdit2" data-toggle="modal"
+                                        onclick="$('#modalEdit #formDelete').attr('action', '<?= site_url('user/LayananKK/editKel/' . $kk->id_keluarga) ?>')"
+                                        class='btn btn-warning btn-circle'>
+                                        <i class="fa fa-edit" aria-hidden="true">&nbsp;Edit</i>
+                                    </a>
 
-                                <?php elseif ($kk->status == "Ditolak") : ?>
-                                <a class='btn btn-warning' href="#modalEdit3" data-toggle="modal"
-                                    onclick="$('#modalEdit #formDelete').attr('action', '<?= site_url('user/LayananKK/editKel/' . $kk->id_keluarga) ?>')"
-                                    class='btn btn-warning btn-circle'>
-                                    <i class="fa fa-edit" aria-hidden="true">&nbsp;Edit</i>
-                                </a>
+                                    <?php elseif ($kk->status == "Ditolak") : ?>
+                                    <a class='btn btn-warning' href="#modalEdit3" data-toggle="modal"
+                                        onclick="$('#modalEdit #formDelete').attr('action', '<?= site_url('user/LayananKK/editKel/' . $kk->id_keluarga) ?>')"
+                                        class='btn btn-warning btn-circle'>
+                                        <i class="fa fa-edit" aria-hidden="true">&nbsp;Edit</i>
+                                    </a>
 
-                                <?php else : ?>
-                                <a class='btn btn-warning'
-                                    href="<?= base_url() . 'user/LayananKK/editKel/' . $kk->id_keluarga ?>">
-                                    <i class="fas fa-edit" aria-hidden="true"><span> Edit</span></i>
-                                </a>
+                                    <?php else : ?>
+                                    <a class='btn btn-warning'
+                                        href="<?= base_url() . 'user/LayananKK/editKel/' . $kk->id_keluarga ?>">
+                                        <i class="fas fa-edit" aria-hidden="true"><span> Edit</span></i>
+                                    </a>
 
-                                <?php endif ?>
-                                <a class='btn btn-info'
-                                    href="<?= base_url() . 'user/LayananKK/detailKel/' . $kk->id_keluarga ?>">
-                                    <i class="fas fa-eye" aria-hidden="true"><span>
-                                            Detail</span></i>
-                                </a>
+                                    <?php endif ?>
+                                    <a class='btn btn-info'
+                                        href="<?= base_url() . 'user/LayananKK/detailKel/' . $kk->id_keluarga ?>">
+                                        <i class="fas fa-eye" aria-hidden="true"><span>
+                                                Detail</span></i>
+                                    </a>
 
 
 
-                            </td>
+                                </td>
+                            </tr>
                             <?php endforeach ?>
                         </tfoot>
                     </table>

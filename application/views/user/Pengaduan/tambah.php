@@ -15,7 +15,7 @@
                         </div>
                         <div class="card-body">
                             <form action="" method="post" enctype="multipart/form-data">
-                                <?php foreach($penduduk as $j):?>
+                                <?php foreach ($penduduk as $j) : ?>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="nama"><strong>NAMA</strong></label>
@@ -63,7 +63,7 @@
                                             class="fa fa-save"></i>&nbsp;&nbsp;Submit</button>
                                     <button type="reset" class="btn btn-danger"><i
                                             class="fa fa-times"></i>&nbsp;&nbsp;Batal</button>
-                                    <a href="<?=base_url("user/Pengaduan");?>" class="btn btn-info"><i
+                                    <a href="<?= base_url("user/Pengaduan"); ?>" class="btn btn-info"><i
                                             class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
                                 </div>
                             </form>

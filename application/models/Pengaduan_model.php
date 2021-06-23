@@ -34,6 +34,14 @@ class Pengaduan_model extends CI_Model {
     }
 
     public function tambahDataPengaduan($upload){
+        // data notifikasi
+        $dataNotif  = array(
+
+            'akses'         => "Admin",
+            'id_penduduk'   => $this->session->userdata('id_penduduk'),
+            'id_pengaduan'        => $this->input->post('id_pengaduan', true),
+            'text'          => "Pengaduan baru",
+        );
 		$data=[
             'id_pengaduan'=>$this->input->post('id_pengaduan', true),
             'id_penduduk'=>$this->session->userdata('id_penduduk'),
@@ -44,6 +52,18 @@ class Pengaduan_model extends CI_Model {
             'status'=>'Diajukan',
 		];
 	$this->db->insert('pengaduan', $data);
+
+        // buat notifikasi 
+        $judul      = "Pengaduan Baru";
+        $deskripsi  = "Terdapat pengaduan baru pada " . date('d F Y H.i A');
+        $hak_aksestujuan = "Admin";
+
+        insertDataNotifikasi(
+            $judul,
+            $deskripsi,
+            $dataNotif,
+            $hak_aksestujuan
+        );
     }
     
     public function upload(){    
@@ -75,12 +95,118 @@ class Pengaduan_model extends CI_Model {
     }
     
     public function ubahPengaduan($id_pengaduan){
-		$data=[
-            'alasan'=>$this->input->post('alasan', true),
-            'status'=>$this->input->post('status', true),
-		];
-        $this->db->where('id_pengaduan', $id_pengaduan);	
+        $status = $this->input->post('status', true); // inisialisasi nilai agar dapat digunakan di 2 objek berbeda
+        $alasan = $this->input->post('alasan', true);
+
+        // data notifikasi
+
+
+        // ambil data informasi penduduk yang dituju 
+        /** Karena parameter yang kita terima adalah @id_ktp maka kita harus memanggil 
+         * data ktp dan berdasasrkan id_penduduk yang bersangkutan */
+
+        #Informasi KTP
+        $ambilDataInformasiKTPById = $this->db->get_where('pengaduan', ['id_pengaduan' => $id_pengaduan])->row_array(); // sorthand query 
+
+        // alternate 
+        /** $ambilDataInformasiKTPById = "SELECT * FROM ktp WHERE id_ktp = '$id_ktp'"; */
+
+        $penerima = $ambilDataInformasiKTPById['id_penduduk']; // id_penduduk
+
+        $dataNotif  = array(
+
+            'akses'         => "Penduduk", // RT | RW | Admin | Pegawai | Penduduk
+            'id_penduduk'   => $penerima,
+            'id_ktp'        => $this->input->post('id_ktp', true),
+            'text'          => "Pengaduan " . $status,
+        );
+
+        // buat notifikasi 
+        $judul      = "Pengaduan";
+        $deskripsi  = "Status " . $status;
+
+        $hak_aksestujuan = "Penduduk";
+        $event = $hak_aksestujuan . '-' . $penerima; // karena untuk penduduk dibutuhkan penerima
+
+        insertDataNotifikasi($judul, $deskripsi, $dataNotif, $event);
+
+        if (
+            $status == "Diajukan Ke Kepala Desa"
+        ) {
+
+
+            // buat notifikasi untuk RW
+            $dataNotifPegawai  = array(
+
+                'akses'         => "Pegawai", // RT | RW | Admin | Pegawai | Penduduk
+                'id_penduduk'   => $penerima,
+                'id_pengaduan'        => $this->input->post('id_pengaduan', true),
+                'text'          => 'Pengaduan baru',
+            );
+
+            // buat notifikasi 
+            $judulPegawai     = "Pengaduan";
+            $deskripsiPegawai  = "Status " . $status;
+
+            $hak_aksestujuanPegawai = "Pegawai";
+            $event = $hak_aksestujuanPegawai;
+
+            insertDataNotifikasi($judulPegawai, $deskripsiPegawai, $dataNotifPegawai, $event);
+        }
+
+        $data = [
+            'status' => $status,
+            'alasan' => $alasan,
+        ];
+        $this->db->where('id_pengaduan', $id_pengaduan);
         $this->db->update('pengaduan', $data);
+    }
+
+
+    public function ubahPengaduanPegawai($id_pengaduan)
+    {
+        $status = $this->input->post('status', true); // inisialisasi nilai agar dapat digunakan di 2 objek berbeda
+        $alasan = $this->input->post('alasan', true);
+
+        // data notifikasi
+
+
+        // ambil data informasi penduduk yang dituju 
+        /** Karena parameter yang kita terima adalah @id_ktp maka kita harus memanggil 
+         * data ktp dan berdasasrkan id_penduduk yang bersangkutan */
+
+        #Informasi KTP
+        $ambilDataInformasiKTPById = $this->db->get_where('pengaduan', ['id_pengaduan' => $id_pengaduan])->row_array(); // sorthand query 
+
+        // alternate 
+        /** $ambilDataInformasiKTPById = "SELECT * FROM ktp WHERE id_ktp = '$id_ktp'"; */
+
+        $penerima = $ambilDataInformasiKTPById['id_penduduk']; // id_penduduk
+
+        $dataNotif  = array(
+
+            'akses'         => "Penduduk", // RT | RW | Admin | Pegawai | Penduduk
+            'id_penduduk'   => $penerima,
+            'id_ktp'        => $this->input->post('id_ktp', true),
+            'text'          => "Pengaduan " . $status,
+        );
+
+        // buat notifikasi 
+        $judul      = "Pengaduan";
+        $deskripsi  = "Status " . $status;
+
+        $hak_aksestujuan = "Penduduk";
+        $event = $hak_aksestujuan . '-' . $penerima; // karena untuk penduduk dibutuhkan penerima
+
+        insertDataNotifikasi($judul, $deskripsi, $dataNotif, $event);
+
+        $data = [
+            'status' => $status,
+            'alasan' => $alasan,
+        ];
+        $this->db->where('id_pengaduan', $id_pengaduan);
+        $this->db->update('pengaduan', $data);
+
     }
 
 

@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class akta_kelahiran extends CI_Controller
+class Akta_kelahiran extends CI_Controller
 {
 
 

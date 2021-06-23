@@ -180,6 +180,13 @@
                                     </div>
                                     <?php endif ?>
                                 </div>
+                                <br>
+                                <div class="form-row">
+                                    <label for="alasan"><strong>Alasan</strong></label>
+                                    <input type="text" name="alasan" placeholder="" autocomplete="off"
+                                        class="form-control">
+                                </div>
+                                <br>
                                 <div class="form-row">
                                     <label for="nama"><strong>Surat Nikah Laki - Laki</strong></label>
                                 </div>

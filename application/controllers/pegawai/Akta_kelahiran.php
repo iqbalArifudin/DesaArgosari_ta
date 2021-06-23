@@ -72,7 +72,7 @@ class Akta_kelahiran extends CI_Controller
             $this->load->view('pegawai/Pelayanan/Akta_kelahiran/edit', $data);
             $this->load->view('template pegawai/footer', $data);
         } else {
-            $this->Akta_kelahiran_model->ubahDataAkta($id_akta);
+            $this->Akta_kelahiran_model->ubahDataAktaPegawai($id_akta);
             $this->session->set_flashdata('pesan3', 'Data Berhasil Di edit');
             $this->load->library('session');
             $this->session->set_flashdata(

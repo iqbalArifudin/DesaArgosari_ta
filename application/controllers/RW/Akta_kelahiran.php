@@ -73,7 +73,7 @@ class Akta_kelahiran extends CI_Controller
             $this->load->view('RW/Pelayanan/Akta_kelahiran/detail', $data);
             $this->load->view('template RW/footer', $data);
         } else {
-            $this->Akta_kelahiran_model->ubahDataAkta($id_akta);
+            $this->Akta_kelahiran_model->ubahDataAktarw($id_akta);
             $this->session->set_flashdata('pesan3', 'Data Berhasil Di edit');
             $this->load->library('session');
             $this->session->set_flashdata(

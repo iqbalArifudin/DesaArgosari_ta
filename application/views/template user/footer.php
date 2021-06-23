@@ -23,7 +23,7 @@
                 <div class="col-lg-4 col-md-6 footer-links">
                     <ul>
                         <li><img src="<?= base_url(); ?>assets/img/tlp.png" alt="" width="140">
-                            <h4>0341000000</h4>
+                            <h4>0341-3053719</h4>
                         </li>
                     </ul>
                 </div>

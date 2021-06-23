@@ -14,7 +14,7 @@ class Akta_kelahiran extends CI_Controller
         $this->load->model('Penduduk_model');
         $this->load->model('Pengaduan_model');
         $this->load->model('Akta_kelahiran_model');
-        $this->load->model('Akta_kelahiran_model');  
+        $this->load->library('pdf');
         }
         
         public function index()

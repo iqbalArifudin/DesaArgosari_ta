@@ -10,8 +10,9 @@
             parent::__construct();
             $this->load->helper('url');
         $this->load->model('Pegawai_model');
-        $this->load->model('Penduduk_model'); 
-            $this->load->model('Ktp_model');  
+        $this->load->model('Penduduk_model');
+        $this->load->model('Ktp_model');
+        $this->load->library('pdf');
         }
         
         public function index()
@@ -96,8 +97,18 @@
             $this->load->view('template admin/sidebar');
             $this->load->view('template admin/topbar'); 
             $this->load->view('admin/Pelayanan/Ktp/detail' ,$data);
-            $this->load->view('template admin/footer'); 
-        } 
+        $this->load->view('template admin/footer');
+    }
+
+    public function pdf($id_ktp)
+    {
+
+        $data['ktp'] = $this->Ktp_model->getDetailKtp($id_ktp);
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->filename = "Surat Pengantar KTP.pdf";
+        $this->pdf->set_option('isRemoteEnabled', true);
+        $this->pdf->load_view('admin/Pelayanan/Ktp/surat_ktp_pdf', $data);
+    }
 
 
     }

@@ -40,13 +40,6 @@
                                         <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
                                     </a>
 
-                                    <?php elseif ($akta->status == "Diproses") : ?>
-                                    <a btn btn-info href="#modalDelete3" data-toggle="modal"
-                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
-                                        class='btn btn-info'>
-                                        <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
-                                    </a>
-
                                     <?php elseif ($akta->status == "Selesai") : ?>
                                     <a btn btn-info href="#modalDelete3" data-toggle="modal"
                                         onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
@@ -77,7 +70,7 @@
 
                                     <?php else : ?>
                                     <a class='btn btn-info'
-                                        href='<?= base_url().'admin/akta_kelahiran/edit/'.$akta->id_akta?>'
+                                        href='<?= base_url() . 'admin/akta_kelahiran/edit/' . $akta->id_akta ?>'
                                         class='btn btn-biru'>
                                         <i class="fas fa-hourglass-half"
                                             aria-hidden="true"><span>&nbsp;Proses</span></i>

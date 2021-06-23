@@ -52,7 +52,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <a class="nav-link" href="<?php echo base_url() . 'RW/akta_kelahiran' ?>">
+                            <a class="nav-link" href="<?php echo base_url() . 'RW/Akta_kelahiran' ?>">
                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Akta Kelahiran
                                 </div>
                                 <div class="row no-gutters align-items-center">
