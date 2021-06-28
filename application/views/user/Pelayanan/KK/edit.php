@@ -146,11 +146,12 @@
                                                     for="customFile"><?= $k->surat_rt_rw ?></label>
                                                 <?= form_error('surat_rt_rw', '<small class="text-danger pl-3">', '</small>'); ?>
                                             </div>
-                                            <br>
-                                            <div class="form-row">
-                                                <img src="<?= base_url('assets/foto_kk/') . $k->surat_rt_rw ?>"
-                                                    style="width:400px;" height="500px">
-                                            </div>
+
+                                        </div>
+                                        <br>
+                                        <div class="form-row">
+                                            <img src="<?= base_url('assets/foto_kk/') . $k->surat_rt_rw ?>"
+                                                style="width:400px;" height="500px">
                                         </div>
                                         <p>
                                         <div class="form-group">

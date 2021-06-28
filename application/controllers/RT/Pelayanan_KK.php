@@ -18,7 +18,7 @@ class Pelayanan_KK extends CI_Controller
     public function index()
     {
         $data['penduduk'] = $this->Penduduk_model->getPenduduk($this->session->userdata('id_penduduk'));
-        $data['kk'] = $this->KK_model->tampilKK();
+        $data['kk'] = $this->KK_model->tampilKK_all();
         $data['penduduk1'] = $this->Penduduk_model->tampilPendudukSaja($this->session->userdata('id_penduduk'));
         $this->load->view('template RT/header', $data);
         $this->load->view('template RT/sidebar', $data);

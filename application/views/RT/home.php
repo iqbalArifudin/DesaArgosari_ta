@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <a class="nav-link" href="<?php echo base_url() . 'RT/Pelayanan_kk' ?>">
+                            <a class="nav-link" href="<?php echo base_url() . 'RT/Pelayanan_KK' ?>">
                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     Kartu keluarga</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">PELAYANAN KK</div>

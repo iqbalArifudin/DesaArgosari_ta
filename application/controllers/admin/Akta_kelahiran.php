@@ -12,7 +12,8 @@ class Akta_kelahiran extends CI_Controller
             $this->load->helper('url');
         $this->load->model('Pegawai_model');
         $this->load->model('Penduduk_model');
-        $this->load->model('Akta_kelahiran_model');  
+        $this->load->model('Akta_kelahiran_model');
+        $this->load->library('pdf'); 
         }
         
         public function index()
@@ -96,8 +97,16 @@ class Akta_kelahiran extends CI_Controller
             $this->load->view('template admin/sidebar');
             $this->load->view('template admin/topbar'); 
             $this->load->view('admin/Pelayanan/Akta_kelahiran/detail' ,$data);
-            $this->load->view('template admin/footer'); 
-        } 
+        $this->load->view('template admin/footer');
+    }
+
+    public function pdf()
+    {
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->filename = "Surat Pengantar Akta.pdf";
+        $this->pdf->set_option('isRemoteEnabled', true);
+        $this->pdf->load_view('admin/Pelayanan/Akta_kelahiran/surat_akta_pdf');
+    }
 
 
     }

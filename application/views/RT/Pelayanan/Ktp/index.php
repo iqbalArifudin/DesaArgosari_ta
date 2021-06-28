@@ -76,6 +76,12 @@
                                         class='btn btn-info'>
                                         <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
                                     </a>
+                                    <?php elseif ($ktp->status == "Disetujui") : ?>
+                                    <a btn btn-info href="#modalDelete3" data-toggle="modal"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('RT/Pelayanan_ktp/edit/' . $ktp->id_ktp) ?>')"
+                                        class='btn btn-info'>
+                                        <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
+                                    </a>
 
                                     <?php else : ?>
 

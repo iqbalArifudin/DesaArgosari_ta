@@ -81,11 +81,6 @@
                                     <img src="<?= base_url('assets/persyaratan_akta/') . $a->fc_kk ?>" class="card-img"
                                         alt="..." width="100px">
                                     <p>
-                                        <br>
-                                        <a class='btn btn-dark'
-                                            href="<?php echo base_url() . 'pegawai/akta_kelahiran/downloadkk/' . $a->id_akta; ?>">
-                                            <i class="fas fa-download" aria-hidden="true"><span> Download</span></i>
-                                        </a>
                                 </div>
                                 <hr>
                                 <div class="form-row">
@@ -93,11 +88,6 @@
                                     <img src="<?= base_url('assets/persyaratan_akta/') . $a->fc_ktp_ayah ?>"
                                         class="card-img" alt="..." width="100px">
                                     <p>
-                                        <br>
-                                        <a class='btn btn-dark'
-                                            href="<?php echo base_url() . 'pegawai/akta_kelahiran/downloadktp_a/' . $a->id_akta; ?>">
-                                            <i class="fas fa-download" aria-hidden="true"><span> Download</span></i>
-                                        </a>
                                 </div>
                                 <hr>
                                 <div class="form-row">
@@ -105,11 +95,6 @@
                                     <img src="<?= base_url('assets/persyaratan_akta/') . $a->fc_ktp_ibu ?>"
                                         class="card-img" alt="..." width="100px">
                                     <p>
-                                        <br>
-                                        <a class='btn btn-dark'
-                                            href="<?php echo base_url() . 'pegawai/akta_kelahiran/downloadktp_i/' . $a->id_akta; ?>">
-                                            <i class="fas fa-download" aria-hidden="true"><span> Download</span></i>
-                                        </a>
                                 </div>
                                 <hr>
                                 <div class="form-row">
@@ -117,11 +102,6 @@
                                     <img src="<?= base_url('assets/persyaratan_akta/') . $a->fc_ktp_saksi ?>"
                                         class="card-img" alt="..." width="100px">
                                     <p>
-                                        <br>
-                                        <a class='btn btn-dark'
-                                            href="<?php echo base_url() . 'pegawai/akta_kelahiran/downloadktp_s/' . $a->id_akta; ?>">
-                                            <i class="fas fa-download" aria-hidden="true"><span> Download</span></i>
-                                        </a>
                                 </div>
                                 <hr>
                                 <div class="form-row">
@@ -129,11 +109,6 @@
                                     <img src="<?= base_url('assets/persyaratan_akta/') . $a->surat_kelahiran ?>"
                                         class="card-img" alt="..." width="100px">
                                     <p>
-                                        <br>
-                                        <a class='btn btn-dark'
-                                            href="<?php echo base_url() . 'pegawai/akta_kelahiran/downloadktp_sk/' . $a->id_akta; ?>">
-                                            <i class="fas fa-download" aria-hidden="true"><span> Download</span></i>
-                                        </a>
                                 </div>
 
                                 <?php endforeach ?>

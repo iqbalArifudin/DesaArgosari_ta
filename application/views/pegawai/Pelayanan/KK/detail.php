@@ -152,12 +152,7 @@
 
                                 </div>
                                 <img src="<?= base_url('assets/foto_kk/') . $k->surat_rt_rw ?>" class="card-img"
-                                    style="width: 50%;">
-                                <p>
-                                    <a class='btn btn-dark'
-                                        href="<?php echo base_url() . 'pegawai/PelayananKK/download/' . $k->id_kepala_kel; ?>">
-                                        <i class="fas fa-download" aria-hidden="true"><span> Download</span></i>
-                                    </a>
+                                    style="width: 30%;">
 
                                 <p>
                                     <br>
@@ -166,12 +161,7 @@
 
                                 </div>
                                 <img src="<?= base_url('assets/foto_kk/') . $k->suratnikah_l ?>" class="card-img"
-                                    style="width: 50%;">
-                                <p>
-                                    <a class='btn btn-dark'
-                                        href="<?php echo base_url() . 'pegawai/PelayananKK/download1/' . $k->id_kepala_kel; ?>">
-                                        <i class="fas fa-download" aria-hidden="true"><span> Download</span></i>
-                                    </a>
+                                    style="width: 30%;">
 
                                 <p>
                                     <br>
@@ -180,12 +170,7 @@
 
                                 </div>
                                 <img src="<?= base_url('assets/foto_kk/') . $k->suratnikah_p ?>" class="card-img"
-                                    style="width: 50%;">
-                                <p>
-                                    <a class='btn btn-dark'
-                                        href="<?php echo base_url() . 'pegawai/PelayananKK/download2/' . $k->id_kepala_kel; ?>">
-                                        <i class="fas fa-download" aria-hidden="true"><span> Download</span></i>
-                                    </a>
+                                    style="width: 30%;">
 
                                 <p>
                                     <br>
@@ -195,11 +180,6 @@
                                 </div>
                                 <img src="<?= base_url('assets/foto_kk/') . $k->kk1 ?>" class="card-img"
                                     style="width: 50%;">
-                                <p>
-                                    <a class='btn btn-dark'
-                                        href="<?php echo base_url() . 'pegawai/PelayananKK/download3/' . $k->id_kepala_kel; ?>">
-                                        <i class="fas fa-download" aria-hidden="true"><span> Download</span></i>
-                                    </a>
 
                                 <p>
                                     <br>
@@ -210,10 +190,6 @@
                                 <img src="<?= base_url('assets/foto_kk/') . $k->kk2 ?>" class="card-img"
                                     style="width: 50%;">
                                 <p>
-                                    <a class='btn btn-dark'
-                                        href="<?php echo base_url() . 'pegawai/PelayananKK/download4/' . $k->id_kepala_kel; ?>">
-                                        <i class="fas fa-download" aria-hidden="true"><span> Download</span></i>
-                                    </a>
                                     <?php endforeach ?>
                                 <p>
                                     <hr>

@@ -106,12 +106,13 @@
                 </center>
                 <div class="card-body text-primary">
                     <h5 class="card-title">1. Silahkan Pilih Fitur Pelayanan KTP</h5>
-                    <h5 class="card-title">2. Kemudian download Surat Pengantar dari RT / RW Pada tombol donwload</h5>
-                    <h5 class="card-title">3. Lakukan Tanda tangan Offline ke Ketua RT / RW</h5>
-                    <h5 class="card-title">4. Kemudian Terdapat Button Tambah Data KTP, Silahkan Klik</h5>
-                    <h5 class="card-title">5. Isi dan Lengkapi Form Pengajuan KTP, klik Submit</h5>
-                    <h5 class="card-title">6. Pengajuan Anda Sedang Diproses</h5>
-                    <h5 class="card-title">7. Untuk Mengetahui Proses Pengajuan Anda, Lihat Kolom Status Pada Tabel</h5>
+                    <h5 class="card-title">2. Pastikan Anda Sudah meminta Tanda Tangan Ke Ketua RT / RW (offline)</h5>
+                    <h5 class="card-title">3. Kemudian download Surat Pengantar dari RT / RW Pada tombol donwload</h5>
+                    <h5 class="card-title">4. Lakukan Tanda tangan Offline ke Ketua RT / RW</h5>
+                    <h5 class="card-title">5. Kemudian Terdapat Button Tambah Data KTP, Silahkan Klik</h5>
+                    <h5 class="card-title">6. Isi dan Lengkapi Form Pengajuan KTP, klik Submit</h5>
+                    <h5 class="card-title">7. Pengajuan Anda Sedang Diproses</h5>
+                    <h5 class="card-title">8. Untuk Mengetahui Proses Pengajuan Anda, Lihat Kolom Status Pada Tabel</h5>
                     <div class="form-group">
                     </div>
                 </div>
@@ -123,11 +124,12 @@
                 </center>
                 <div class="card-body text-primary">
                     <h5 class="card-title">1. Silahkan Pilih Fitur Pelayanan KK</h5>
-                    <h5 class="card-title">2. Kemudian Terdapat Button Tambah Data KK, Silahkan Klik</h5>
-                    <h5 class="card-title">3. Isi dan Lengkapi Form Pengajuan Data Kartu Keluarga, klik Submit</h5>
-                    <h5 class="card-title">4. Pastikan Upload Persyaratan Dengan Benar</h5>
-                    <h5 class="card-title">5. Pengajuan Anda Sedang Diproses</h5>
-                    <h5 class="card-title">6. Untuk Mengetahui Proses Pengajuan Anda, Lihat Kolom Status Pada Tabel</h5>
+                    <h5 class="card-title">2. Pastikan Anda Sudah meminta Tanda Tangan Ke Ketua RT / RW (offline)</h5>
+                    <h5 class="card-title">3. Kemudian Terdapat Button Tambah Data KK, Silahkan Klik</h5>
+                    <h5 class="card-title">4. Isi dan Lengkapi Form Pengajuan Data Kartu Keluarga, klik Submit</h5>
+                    <h5 class="card-title">5. Pastikan Upload Persyaratan Dengan Benar</h5>
+                    <h5 class="card-title">6. Pengajuan Anda Sedang Diproses</h5>
+                    <h5 class="card-title">7. Untuk Mengetahui Proses Pengajuan Anda, Lihat Kolom Status Pada Tabel</h5>
                 </div>
             </div>
 
@@ -137,11 +139,12 @@
                 </center>
                 <div class="card-body text-primary">
                     <h5 class="card-title">1. Silahkan Pilih Fitur Pelayanan Akta Kelahiran</h5>
-                    <h5 class="card-title">2. Kemudian Terdapat Button Tambah Data Akta Kelahiran, Silahkan Klik</h5>
-                    <h5 class="card-title">3. Isi dan Lengkapi Form Pengajuan Data Akta Kelahiran, klik Submit</h5>
-                    <h5 class="card-title">4. Pastikan Upload Persyaratan Dengan Benar</h5>
-                    <h5 class="card-title">5. Pengajuan Anda Sedang Diproses</h5>
-                    <h5 class="card-title">6. Untuk Mengetahui Proses Pengajuan Anda, Lihat Kolom Status Pada Tabel</h5>
+                    <h5 class="card-title">2. Pastikan Anda Sudah meminta Tanda Tangan Ke Ketua RT / RW (offline)</h5>
+                    <h5 class="card-title">3. Kemudian Terdapat Button Tambah Data Akta Kelahiran, Silahkan Klik</h5>
+                    <h5 class="card-title">4. Isi dan Lengkapi Form Pengajuan Data Akta Kelahiran, klik Submit</h5>
+                    <h5 class="card-title">5. Pastikan Upload Persyaratan Dengan Benar</h5>
+                    <h5 class="card-title">6. Pengajuan Anda Sedang Diproses</h5>
+                    <h5 class="card-title">7. Untuk Mengetahui Proses Pengajuan Anda, Lihat Kolom Status Pada Tabel</h5>
 
                 </div>
             </div>

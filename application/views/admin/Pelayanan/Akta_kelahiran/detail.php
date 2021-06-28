@@ -69,91 +69,7 @@
                                         class="form-control" required value="<?= $a->keterangan; ?>" readonly>
                                 </div>
                                 <br>
-                                <div class="form-row">
-                                    <label for="nama"><strong>Alasan</strong></label>
-                                    <input type="text" name="nama" placeholder="" autocomplete="off"
-                                        class="form-control" value="<?= $a->alasan; ?>">
-                                </div>
-                                <hr>
-                                <div class="form-group">
-                                    <label for="nim"><strong>Ajukan</strong></label>
-                                    <?php if ($a->status == "Diajukan Ke Kepala Desa") : ?>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diajukan Ke Kepala Desa"
-                                            checked>Diajukan Ke Kepala Desa
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Ditolak">Ditolak
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diproses">Diproses
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Selesai">Selesai
-                                    </div>
 
-                                    <?php elseif ($a->status == "Ditolak") : ?>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diajukan Ke Kepala Desa">Diajukan Ke
-                                        Kepala Desa
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Ditolak" checked>Ditolak
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diproses">Diproses
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Selesai">Selesai
-                                    </div>
-
-                                    <?php elseif ($a->status == "Diproses") : ?>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diajukan Ke Kepala Desa">Diajukan Ke
-                                        Kepala Desa
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Ditolak">Ditolak
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diproses" checked>Diproses
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Selesai">Selesai
-                                    </div>
-
-                                    <?php elseif ($a->status == "Selesai") : ?>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diajukan Ke Kepala Desa">Diajukan Ke
-                                        Kepala Desa
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Ditolak">Ditolak
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diproses">Diproses
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Selesai" checked>Selesai
-                                    </div>
-
-
-                                    <?php else : ?>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diajukan Ke Kepala Desa">Diajukan Ke
-                                        Kepala Desa
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Ditolak">Ditolak
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diproses">Diproses
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Selesai">Selesai
-                                    </div>
-                                    <?php endif ?>
-                                </div>
                                 <div class="form-row">
                                     <label for="nama"><strong>Persyaratan KK</strong></label>
                                     <img src="<?= base_url('assets/persyaratan_akta/') . $a->fc_kk ?>" class="card-img"
@@ -190,11 +106,103 @@
                                         class="card-img" alt="..." width="100px">
                                 </div>
 
+                                <hr>
+                                <div class="form-group">
+                                    <label for="nim"><strong>Ajukan</strong></label>
+                                    <?php if ($a->status == "Diajukan Ke Kepala Desa") : ?>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Diajukan Ke Kepala Desa"
+                                            checked>Diajukan Ke Kepala Desa
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Ditolak">Ditolak
+                                    </div>
+
+                                    <?php elseif ($a->status == "Ditolak") : ?>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Diajukan Ke Kepala Desa">Diajukan Ke
+                                        Kepala Desa
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Ditolak" checked>Ditolak
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Diproses">Diproses
+                                    </div>
+
+                                    <?php elseif ($a->status == "Diproses") : ?>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Ditolak">Ditolak
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Diproses" checked>Diproses
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Selesai">Selesai
+                                    </div>
+
+                                    <?php elseif ($a->status == "Disetujui") : ?>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Ditolak">Ditolak
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Diproses">Diproses
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Selesai">Selesai
+                                    </div>
+
+
+                                    <?php else : ?>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Diajukan Ke Kepala Desa">Diajukan Ke
+                                        Kepala Desa
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Ditolak">Ditolak
+                                    </div>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Diproses">Diproses
+                                    </div>
+                                    <?php endif ?>
+                                </div>
+                                <p>
+                                <div class="form-row">
+                                    <label for="nama"><strong>Alasan</strong></label>
+                                    <input type="text" name="nama" placeholder="" autocomplete="off"
+                                        class="form-control" value="<?= $a->alasan; ?>">
+                                </div>
+
                                 <?php endforeach ?>
                                 <p>
                                     <hr>
+
+                                    <?php if ($a->status == "Diajukan Ke Kepala Desa") : ?>
+                                    <a btn btn-info href="#modalDelete3" data-toggle="modal"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/akta_kelahiran/pdf') ?>')"
+                                        class='btn btn-warning'>
+                                        <i class="fa fa-print" aria-hidden="true">&nbsp;Cetak</i>
+                                    </a>
+
+                                    <?php elseif ($a->status == "Ditolak") : ?>
+                                    <a btn btn-info href="#modalDelete3" data-toggle="modal"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/akta_kelahiran/pdf') ?>')"
+                                        class='btn btn-warning'>
+                                        <i class="fa fa-print" aria-hidden="true">&nbsp;Cetak</i>
+                                    </a>
+
+                                    <?php elseif ($a->status == "Diajukan Ke Pelayanan") : ?>
+                                    <a btn btn-info href="#modalDelete3" data-toggle="modal"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/akta_kelahiran/pdf' ) ?>')"
+                                        class='btn btn-warning'>
+                                        <i class="fa fa-print" aria-hidden="true">&nbsp;Cetak</i>
+                                    </a>
+
+                                    <?php else : ?>
                                     <a href="<?= base_url("admin/akta_kelahiran/pdf"); ?>" class="btn btn-warning"><i
                                             class="fa fa-print"></i>&nbsp;&nbsp;Cetak</a>
+
+                                    <?php endif ?>
                                     <button type="submit" name="submit" class="btn btn-success "><i
                                             class="fa fa-save"></i>&nbsp;&nbsp;Ajukan</button>
                                     <a href="<?= base_url("admin/akta_kelahiran"); ?>" class="btn btn-info"><i
@@ -204,6 +212,25 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalDelete3">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <div class="text-danger"><b>Peringatan !</b></div>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Mohon maaf data tidak dapat Dicetak, Karena Belum Disetujui oleh Kepala Desa.
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
     </div>

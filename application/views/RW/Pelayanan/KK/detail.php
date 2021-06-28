@@ -147,6 +147,41 @@
                                 </div>
                                 <p>
 
+
+                                    <br>
+                                <div class="form-row">
+                                    <label for="nama"><strong>Surat Nikah Laki - Laki</strong></label>
+                                </div>
+                                <img src="<?= base_url('assets/foto_kk/') . $k->suratnikah_l ?>" class="card-img"
+                                    style="width: 30%;">
+                                <br>
+                                <hr>
+                                <div class="form-row">
+                                    <label for="nama"><strong>Surat Nikah Perempuan</strong></label>
+                                </div>
+                                <img src="<?= base_url('assets/foto_kk/') . $k->suratnikah_p ?>" class="card-img"
+                                    style="width: 30%;">
+                                <br>
+                                <hr>
+                                <div class="form-row">
+                                    <label for="nama"><strong>Kartu Keluarga Suami</strong></label>
+                                </div>
+                                <img src="<?= base_url('assets/foto_kk/') . $k->kk1 ?>" class="card-img"
+                                    style="width: 40%;">
+                                <br>
+                                <hr>
+                                <div class="form-row">
+                                    <label for="nama"><strong>Kartu Keluarga Istri</strong></label>
+                                </div>
+                                <img src="<?= base_url('assets/foto_kk/') . $k->kk2 ?>" class="card-img"
+                                    style="width: 40%;">
+                                <hr>
+                                <div class="form-row">
+                                    <label for="nama"><strong>Surat Pengantar RT / RW</strong></label>
+                                </div>
+                                <img src="<?= base_url('assets/foto_kk/') . $k->surat_rt_rw ?>" class="card-img"
+                                    style="width: 30%;">
+                                <br>
                                 <div class="form-group">
                                     <label for="nim"><strong>Ajukan</strong></label>
                                     <?php if ($k->status == "Diajukan Ke Pelayanan") : ?>
@@ -186,46 +221,12 @@
                                     <input type="text" name="alasan" placeholder="" autocomplete="off"
                                         class="form-control">
                                 </div>
-                                <br>
-                                <div class="form-row">
-                                    <label for="nama"><strong>Surat Nikah Laki - Laki</strong></label>
-                                </div>
-                                <img src="<?= base_url('assets/foto_kk/') . $k->suratnikah_l ?>" class="card-img"
-                                    style="width: 50%;">
-                                <br>
-                                <hr>
-                                <div class="form-row">
-                                    <label for="nama"><strong>Surat Nikah Perempuan</strong></label>
-                                </div>
-                                <img src="<?= base_url('assets/foto_kk/') . $k->suratnikah_p ?>" class="card-img"
-                                    style="width: 50%;">
-                                <br>
-                                <hr>
-                                <div class="form-row">
-                                    <label for="nama"><strong>Kartu Keluarga Suami</strong></label>
-                                </div>
-                                <img src="<?= base_url('assets/foto_kk/') . $k->kk1 ?>" class="card-img"
-                                    style="width: 50%;">
-                                <br>
-                                <hr>
-                                <div class="form-row">
-                                    <label for="nama"><strong>Kartu Keluarga Istri</strong></label>
-                                </div>
-                                <img src="<?= base_url('assets/foto_kk/') . $k->kk2 ?>" class="card-img"
-                                    style="width: 50%;">
-                                <hr>
-                                <div class="form-row">
-                                    <label for="nama"><strong>Surat Pengantar RT / RW</strong></label>
-                                </div>
-                                <img src="<?= base_url('assets/foto_kk/') . $k->surat_rt_rw ?>" class="card-img"
-                                    style="width: 50%;">
-                                <br>
                                 <?php endforeach ?>
                                 <p>
                                     <hr>
                                     <button type="submit" name="submit" class="btn btn-success "><i
                                             class="fa fa-save"></i>&nbsp;&nbsp;Ajukan</button>
-                                    <a href="<?= base_url("RW/Pelayanan_kk") ?>" class="btn btn-info"><i
+                                    <a href="<?= base_url("RW/Pelayanan_KK") ?>" class="btn btn-info"><i
                                             class="fa fa-reply"></i>&nbsp;&nbsp;Kembali</a>
 
                             </form>

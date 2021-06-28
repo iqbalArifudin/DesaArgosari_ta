@@ -42,7 +42,7 @@
                                             </div>
                                             <div class="form-group col-6">
                                                 <label>NIK</label>
-                                                <input type="text" name="NIK_kpl" placeholder="" autocomplete="off"
+                                                <input type="number" name="NIK_kpl" placeholder="" autocomplete="off"
                                                     class="form-control" required value="<?= $j->NIK_kpl; ?>" readonly>
                                             </div>
                                         </div>
@@ -58,8 +58,7 @@
                                             </div>
                                             <div class="form-group col-6">
                                                 <label>NIK</label>
-                                                <input type="text" name="NIK_kel" class="form-control" id="NIK_kel"
-                                                    required>
+                                                <input type="number" name="NIK_kel" class="form-control" id="NIK_kel">
                                             </div>
                                         </div>
                                         <div class="form-row">

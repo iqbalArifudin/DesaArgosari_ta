@@ -69,6 +69,13 @@
                                         <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
                                     </a>
 
+                                    <?php elseif ($akta->status == "Disetujui") : ?>
+                                    <a btn btn-info href="#modalDelete3" data-toggle="modal"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('RT/akta_kelahiran/edit/' . $akta->id_akta) ?>')"
+                                        class='btn btn-info'>
+                                        <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
+                                    </a>
+
                                     <?php elseif ($akta->status == "Diajukan Ke Pelayanan") : ?>
                                     <a btn btn-info href="#modalDelete3" data-toggle="modal"
                                         onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('RT/akta_kelahiran/edit/' . $akta->id_akta) ?>')"

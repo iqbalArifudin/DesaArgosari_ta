@@ -81,9 +81,6 @@
                                     <div class="form-check">
                                         <input type="radio" name="status" value="Diproses">Diproses
                                     </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Selesai">Selesai
-                                    </div>
 
                                     <?php elseif ($penduduk->status == "Ditolak") : ?>
                                     <div class="form-check">
@@ -96,18 +93,8 @@
                                     <div class="form-check">
                                         <input type="radio" name="status" value="Diproses">Diproses
                                     </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Selesai">Selesai
-                                    </div>
 
                                     <?php elseif ($penduduk->status == "Diproses") : ?>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diajukan Ke Kepala Desa">Diajukan Ke
-                                        Kepala Desa
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Ditolak">Ditolak
-                                    </div>
                                     <div class="form-check">
                                         <input type="radio" name="status" value="Diproses" checked>Diproses
                                     </div>
@@ -115,19 +102,12 @@
                                         <input type="radio" name="status" value="Selesai">Selesai
                                     </div>
 
-                                    <?php elseif ($penduduk->status == "Selesai") : ?>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diajukan Ke Kepala Desa">Diajukan Ke
-                                        Kepala Desa
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Ditolak">Ditolak
-                                    </div>
+                                    <?php elseif ($penduduk->status == "Disetujui") : ?>
                                     <div class="form-check">
                                         <input type="radio" name="status" value="Diproses">Diproses
                                     </div>
                                     <div class="form-check">
-                                        <input type="radio" name="status" value="Selesai" checked>Selesai
+                                        <input type="radio" name="status" value="Selesai">Selesai
                                     </div>
 
 
@@ -142,9 +122,6 @@
                                     <div class="form-check">
                                         <input type="radio" name="status" value="Diproses">Diproses
                                     </div>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Selesai">Selesai
-                                    </div>
                                     <?php endif ?>
                                 </div>
 
@@ -157,8 +134,32 @@
                                 <?php endforeach ?>
                                 <p>
                                     <hr>
+                                    <?php if ($penduduk->status == "Diajukan Ke Kepala Desa") : ?>
+                                    <a btn btn-info href="#modalDelete3" data-toggle="modal"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/Pelayanan_ktp/pdf/' .  $penduduk->id_ktp) ?>')"
+                                        class='btn btn-warning'>
+                                        <i class="fa fa-print" aria-hidden="true">&nbsp;Cetak</i>
+                                    </a>
+
+                                    <?php elseif ($penduduk->status == "Ditolak") : ?>
+                                    <a btn btn-info href="#modalDelete3" data-toggle="modal"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/Pelayanan_ktp/pdf/' .  $penduduk->id_ktp) ?>')"
+                                        class='btn btn-warning'>
+                                        <i class="fa fa-print" aria-hidden="true">&nbsp;Cetak</i>
+                                    </a>
+
+                                    <?php elseif ($penduduk->status == "Diajukan Ke Pelayanan") : ?>
+                                    <a btn btn-info href="#modalDelete3" data-toggle="modal"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/Pelayanan_ktp/pdf/' .  $penduduk->id_ktp) ?>')"
+                                        class='btn btn-warning'>
+                                        <i class="fa fa-print" aria-hidden="true">&nbsp;Cetak</i>
+                                    </a>
+
+                                    <?php else : ?>
                                     <a href="<?= base_url("admin/Pelayanan_ktp/pdf/") . $penduduk->id_ktp; ?>"
                                         class="btn btn-warning"><i class="fa fa-print"></i>&nbsp;&nbsp;Cetak</a>
+
+                                    <?php endif ?>
                                     <button type="submit" name="submit" class="btn btn-success "><i
                                             class="fa fa-save"></i>&nbsp;&nbsp;Ajukan</button>
                                     <a href="<?= base_url("admin/Pelayanan_ktp"); ?>" class="btn btn-info"><i
@@ -168,6 +169,26 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modalDelete3">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                    <div class="text-danger"><b>Peringatan !</b></div>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Mohon maaf data tidak dapat Dicetak, Karena Belum Disetujui oleh Kepala Desa.
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
     </div>

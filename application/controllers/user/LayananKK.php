@@ -15,6 +15,7 @@ class LayananKK extends CI_Controller
         $this->load->model('Pengaduan_model');
         $this->load->model('Ktp_model');
         $this->load->model('KK_model');
+        $this->load->library('pdf');
     }
 
     public function index()
@@ -302,6 +303,15 @@ class LayananKK extends CI_Controller
         $this->load->view('template_layanan/topbar');
         $this->load->view('user/Pelayanan/KK/detail_all', $data);
         $this->load->view('template_layanan/footer');
+    }
+
+    public function pdf()
+    {
+        $data['penduduk'] = $this->Penduduk_model->getPenduduk($this->session->userdata('id_penduduk'));
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->filename = "Surat Penerbitan KK RT/RW.pdf";
+        $this->pdf->set_option('isRemoteEnabled', true);
+        $this->pdf->load_view('user/Pelayanan/KK/surat_rt_rw_kk_pdf', $data);
     }
 }
         /* End of fils admin.php */

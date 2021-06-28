@@ -11,7 +11,8 @@
             $this->load->helper('url');
         $this->load->model('Pegawai_model');
         $this->load->model('Penduduk_model');
-        $this->load->model('KK_model'); 
+        $this->load->model('KK_model');
+        $this->load->library('pdf');
         }
         
         public function index()
@@ -69,7 +70,15 @@
         $this->load->view('template admin/topbar');
         $this->load->view('admin/Pelayanan/KK/detail', $data);
         $this->load->view('template admin/footer');
-    } 
+    }
+
+    public function pdf()
+    {
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->filename = "Surat Pengantar KK.pdf";
+        $this->pdf->set_option('isRemoteEnabled', true);
+        $this->pdf->load_view('admin/Pelayanan/KK/surat_kk_pdf');
+    }
 
     }
         /* End of fils admin.php */

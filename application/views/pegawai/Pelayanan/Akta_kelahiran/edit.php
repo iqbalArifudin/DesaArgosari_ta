@@ -69,11 +69,7 @@
                                         class="form-control" required value="<?= $a->keterangan; ?>" readonly>
                                 </div>
                                 <br>
-                                <div class="form-row">
-                                    <label for="nama"><strong>Alasan</strong></label>
-                                    <input type="text" name="alasan" placeholder="" autocomplete="off"
-                                        class="form-control" value="<?= $a->alasan; ?>">
-                                </div>
+
                                 <hr>
                                 <div class="form-group">
                                     <label for="nim"><strong>Status</label></strong>
@@ -107,30 +103,13 @@
                                     <hr>
                                     <?php endif ?>
                                 </div>
+                                <br>
+                                <div class="form-row">
+                                    <label for="nama"><strong>Alasan</strong></label>
+                                    <input type="text" name="alasan" placeholder="" autocomplete="off"
+                                        class="form-control" value="<?= $a->alasan; ?>">
+                                </div>
 
-                                <div class="form-row">
-                                    <label for="nama"><strong>Persyaratan KK</strong></label>
-                                    <img src="<?= base_url('assets/persyaratan_akta/') . $a->fc_kk ?>" class="card-img"
-                                        alt="..." width="100px">
-                                </div>
-                                <hr>
-                                <div class="form-row">
-                                    <label for="nama"><strong>Persyaratan KTP Ayah</strong></label>
-                                    <img src="<?= base_url('assets/persyaratan_akta/') . $a->fc_ktp_ayah ?>"
-                                        class="card-img" alt="..." width="100px">
-                                </div>
-                                <hr>
-                                <div class="form-row">
-                                    <label for="nama"><strong>Persyaratan KTP Ibu</strong></label>
-                                    <img src="<?= base_url('assets/persyaratan_akta/') . $a->fc_ktp_ibu ?>"
-                                        class="card-img" alt="..." width="100px">
-                                </div>
-                                <hr>
-                                <div class="form-row">
-                                    <label for="nama"><strong>Persyaratan KTP Saksi</strong></label>
-                                    <img src="<?= base_url('assets/persyaratan_akta/') . $a->fc_ktp_saksi ?>"
-                                        class="card-img" alt="..." width="100px">
-                                </div>
 
                                 <?php endforeach ?>
                                 <p>

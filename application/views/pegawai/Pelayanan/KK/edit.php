@@ -139,12 +139,7 @@
                                     <input type="text" name="status" placeholder="" autocomplete="off"
                                         class="form-control" required value="<?= $k->status; ?>" readonly>
                                 </div>
-                                <br>
-                                <div class="form-row">
-                                    <label for="nama"><strong>Alasan</strong></label>
-                                    <input type="text" name="nama" placeholder="" autocomplete="off"
-                                        class="form-control" required value="<?= $k->alasan; ?>" readonly>
-                                </div>
+
                                 <p>
                                 <div class="form-group">
                                     <label for="nim"><strong>Status</label></strong>

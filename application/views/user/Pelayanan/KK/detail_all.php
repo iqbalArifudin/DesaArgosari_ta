@@ -151,14 +151,14 @@
                                     <label for="nama"><strong>Surat Nikah Laki - Laki</strong></label>
                                 </div>
                                 <img src="<?= base_url('assets/foto_kk/') . $k->suratnikah_l ?>" class="card-img"
-                                    style="width: 50%;">
+                                    style="width: 30%;">
                                 <br>
                                 <hr>
                                 <div class="form-row">
                                     <label for="nama"><strong>Surat Nikah Perempuan</strong></label>
                                 </div>
                                 <img src="<?= base_url('assets/foto_kk/') . $k->suratnikah_p ?>" class="card-img"
-                                    style="width: 50%;">
+                                    style="width: 30%;">
                                 <br>
                                 <hr>
                                 <div class="form-row">
@@ -178,7 +178,7 @@
                                     <label for="nama"><strong>Surat Pengantar RT / RW</strong></label>
                                 </div>
                                 <img src="<?= base_url('assets/foto_kk/') . $k->surat_rt_rw ?>" class="card-img"
-                                    style="width: 50%;">
+                                    style="width: 30%;">
                                 <br>
                                 <?php endforeach ?>
                                 <p>

@@ -71,6 +71,12 @@
                                         class='btn btn-info'>
                                         <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
                                     </a>
+                                    <?php elseif ($kk->status == "Disetujui") : ?>
+                                    <a btn btn-info href="#modalDelete3" data-toggle="modal"
+                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('RT/Pelayanan_KK/edit/' . $kk->id_kepala_kel) ?>')"
+                                        class='btn btn-info'>
+                                        <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
+                                    </a>
 
                                     <?php else : ?>
 

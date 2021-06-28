@@ -29,7 +29,7 @@
            </li>
            <hr class="sidebar-divider">
            <li class="nav-item">
-               <a href="<?php echo base_url() . 'RW/Pelayanan_kk' ?>" class="nav-link">
+               <a href="<?php echo base_url() . 'RW/Pelayanan_KK' ?>" class="nav-link">
                    <i class="fas fa-newspaper"></i>
                    <span>Pelayanan KK</span></a>
            </li>

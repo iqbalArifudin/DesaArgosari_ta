@@ -38,12 +38,6 @@
                                         <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
                                     </a>
 
-                                    <?php elseif ($kk->status == "Diproses") : ?>
-                                    <a btn btn-info href="#modalDelete3" data-toggle="modal"
-                                        onclick="$('#modalDelete #formDelete').attr('action', '<?= site_url('admin/Pelayanan_kk/edit/' . $kk->id_kepala_kel) ?>')"
-                                        class='btn btn-info'>
-                                        <i class="fa fa-hourglass-half" aria-hidden="true">&nbsp;Proses</i>
-                                    </a>
 
                                     <?php elseif ($kk->status == "Selesai") : ?>
                                     <a btn btn-info href="#modalDelete3" data-toggle="modal"
@@ -75,7 +69,7 @@
 
                                     <?php else : ?>
                                     <a class='btn btn-info'
-                                        href='<?= base_url().'admin/Pelayanan_kk/edit/'.$kk->id_kepala_kel?>'
+                                        href='<?= base_url() . 'admin/Pelayanan_kk/edit/' . $kk->id_kepala_kel ?>'
                                         class='btn btn-biru'>
                                         <i class="fas fa-hourglass-half"
                                             aria-hidden="true"><span>&nbsp;Proses</span></i>

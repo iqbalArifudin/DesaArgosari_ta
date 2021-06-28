@@ -69,45 +69,7 @@
                                         class="form-control" required value="<?= $a->keterangan; ?>" readonly>
                                 </div>
                                 <br>
-                                <div class="form-row">
-                                    <label for="alasan"><strong>Alasan</strong></label>
-                                    <input type="text" name="alasan" placeholder="" autocomplete="off"
-                                        class="form-control">
-                                </div>
-                                <hr>
-                                <div class="form-group">
-                                    <label for="nim"><strong>Ajukan</strong></label>
-                                    <?php if ($a->status == "Diajukan Ke Pelayanan") : ?>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diajukan Ke Pelayanan" checked>Diajukan
-                                        Ke Pelayanan
-                                    </div>
-                                    <br>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Ditolak">Ditolak
-                                    </div>
 
-                                    <?php elseif ($a->status == "Ditolak") : ?>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diajukan Ke Pelayanan">Diajukan Ke
-                                        Pelayanan
-                                    </div>
-                                    <br>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Ditolak" checked>Ditolak
-                                    </div>
-
-                                    <?php else : ?>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Diajukan Ke Pelayanan">Diajukan Ke
-                                        Pelayanan
-                                    </div>
-                                    <br>
-                                    <div class="form-check">
-                                        <input type="radio" name="status" value="Ditolak">Ditolak
-                                    </div>
-                                    <?php endif ?>
-                                </div>
                                 <div class="form-row">
                                     <label for="nama"><strong>Persyaratan KK</strong></label>
                                     <img src="<?= base_url('assets/persyaratan_akta/') . $a->fc_kk ?>" class="card-img"
@@ -142,6 +104,46 @@
                                     <label for="nama"><strong>Persyaratan Surat Pengantar RT / RW</strong></label>
                                     <img src="<?= base_url('assets/persyaratan_akta/') . $a->surat_rt_rw ?>"
                                         class="card-img" alt="..." width="100px">
+                                </div>
+                                <p>
+                                <div class="form-group">
+                                    <label for="nim"><strong>Ajukan</strong></label>
+                                    <?php if ($a->status == "Diajukan Ke Pelayanan") : ?>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Diajukan Ke Pelayanan" checked>Diajukan
+                                        Ke Pelayanan
+                                    </div>
+                                    <br>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Ditolak">Ditolak
+                                    </div>
+
+                                    <?php elseif ($a->status == "Ditolak") : ?>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Diajukan Ke Pelayanan">Diajukan Ke
+                                        Pelayanan
+                                    </div>
+                                    <br>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Ditolak" checked>Ditolak
+                                    </div>
+
+                                    <?php else : ?>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Diajukan Ke Pelayanan">Diajukan Ke
+                                        Pelayanan
+                                    </div>
+                                    <br>
+                                    <div class="form-check">
+                                        <input type="radio" name="status" value="Ditolak">Ditolak
+                                    </div>
+                                    <?php endif ?>
+                                </div>
+                                <p>
+                                <div class="form-row">
+                                    <label for="alasan"><strong>Alasan</strong></label>
+                                    <input type="text" name="alasan" placeholder="" autocomplete="off"
+                                        class="form-control">
                                 </div>
 
                                 <?php endforeach ?>

@@ -26,7 +26,7 @@
                 <div class="info-box">
                     <i class="bx bx-phone-call"></i>
                     <h3>Telepon</h3>
-                    <p>034100000</p>
+                    <p>0341-3053719</p>
                 </div>
             </div>
 
